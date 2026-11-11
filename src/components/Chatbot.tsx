@@ -28,26 +28,33 @@ export const Chatbot: React.FC = () => {
   const chatBodyRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const scrollToBottom = (behavior: ScrollBehavior = 'smooth') => {
+  const scrollToBottom = () => {
     if (chatBodyRef.current) {
-      chatBodyRef.current.scrollTo({
-        top: chatBodyRef.current.scrollHeight,
-        behavior,
-      });
+      try {
+        chatBodyRef.current.scrollTop = chatBodyRef.current.scrollHeight;
+      } catch {
+        // Fallback
+      }
     }
   };
 
   useEffect(() => {
     if (isOpen) {
-      scrollToBottom('auto');
-      setTimeout(() => inputRef.current?.focus(), 150);
+      setTimeout(() => {
+        scrollToBottom();
+        try {
+          inputRef.current?.focus();
+        } catch {
+          // Fallback
+        }
+      }, 60);
     }
   }, [isOpen]);
 
   // Only auto-scroll down when a new message is appended or typing state initiates
   useEffect(() => {
     if (isOpen) {
-      scrollToBottom('smooth');
+      scrollToBottom();
     }
   }, [messages.length, isTyping]);
 
@@ -126,12 +133,13 @@ export const Chatbot: React.FC = () => {
   };
 
   const renderFormattedText = (rawText: string) => {
+    if (!rawText) return null;
     const lines = rawText.split('\n');
 
     return (
       <div className="space-y-1.5 text-[13px] leading-relaxed text-slate-700">
         {lines.map((line, idx) => {
-          if (!line.trim()) return <div key={idx} className="h-1" />;
+          if (!line || !line.trim()) return <div key={idx} className="h-1" />;
 
           // Headers
           if (line.startsWith('### ')) {
@@ -149,6 +157,7 @@ export const Chatbot: React.FC = () => {
           const parts = formattedLine.split(/(\*\*.*?\*\*|`.*?`|\[.*?\]\(.*?\))/g);
 
           const content = parts.map((part, pIdx) => {
+            if (!part) return null;
             if (part.startsWith('**') && part.endsWith('**')) {
               return (
                 <strong key={pIdx} className="font-semibold text-slate-900">
@@ -164,7 +173,7 @@ export const Chatbot: React.FC = () => {
               );
             }
             const linkMatch = part.match(/\[(.*?)\]\((.*?)\)/);
-            if (linkMatch) {
+            if (linkMatch && linkMatch[1] && linkMatch[2]) {
               return (
                 <a
                   key={pIdx}
@@ -367,8 +376,6 @@ export const Chatbot: React.FC = () => {
                   <div className="w-1.5 h-1.5 rounded-full bg-slate-400 animate-bounce [animation-delay:0.4s]" />
                 </div>
               )}
-
-              <div ref={messagesEndRef} />
             </div>
 
             {/* Light Minimal Prompt Chips */}
