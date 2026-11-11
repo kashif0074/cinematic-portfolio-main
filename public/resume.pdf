@@ -1,0 +1,81 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Contents 4 0 R /Resources << /Font << /F1 5 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 1350 >>
+stream
+BT
+/F1 18 Tf
+50 740 Td
+(KASHIF SHAHZAD - FULL-STACK & AI ENGINEER) Tj
+/F1 10 Tf
+0 -20 Td
+(Portfolio: kashifshahzad.dev | GitHub: https://github.com/kashif0074) Tj
+0 -14 Td
+(-------------------------------------------------------------------------------------------------------------------) Tj
+0 -22 Td
+(PROFESSIONAL PROFILE) Tj
+0 -14 Td
+(AI Automation Engineer and Full-Stack Developer passionate about building intelligent,) Tj
+0 -12 Td
+(scalable web applications, multi-agent systems, RAG architectures, and healthcare technology.) Tj
+0 -22 Td
+(EXPERIENCE) Tj
+0 -14 Td
+(Full-Stack & AI Engineer | Revive Medical Technologies Inc. [June 2026 - Present]) Tj
+0 -12 Td
+(- Engineered conversational AI features, Groq API endpoints, and HeyGen voice/video avatars.) Tj
+0 -12 Td
+(- Built scalable production web apps with React, Next.js, TypeScript, Node.js, and PostgreSQL.) Tj
+0 -14 Td
+(Logistics Assistant | Daraz Pakistan [May 2022 - April 2025]) Tj
+0 -12 Td
+(- Managed tracking, shipment updates, inventory systems, and technical order routing.) Tj
+0 -22 Td
+(FEATURED PRODUCTION PROJECTS) Tj
+0 -14 Td
+(1. The AI Engineer Job Tracker: AutoGen 3-agent orchestration, LangGraph Playwright, pgvector, Neo4j.) Tj
+0 -12 Td
+(2. LeadLens: Next.js 16, React 19, BullMQ & Redis async queues, Prisma 5 ORM, Google OAuth.) Tj
+0 -12 Td
+(3. Avatar Chat: Zero-GPU lip-sync, Microsoft Edge Neural TTS, Groq LLM, Web Audio API envelope.) Tj
+0 -12 Td
+(4. CMS Medicare Provider Directory: Python 3.13, Flask 3.1, 2M+ records, 5-step contact intelligence.) Tj
+0 -12 Td
+(5. Prime Healthcares LLC & eVitals RPM: Production healthcare web platforms live online.) Tj
+0 -12 Td
+(6. Gym Management System: ASP.NET Core Web API, C#, React 18, TypeScript, Entity Framework Core.) Tj
+0 -22 Td
+(CORE SKILLS) Tj
+0 -14 Td
+(AI/ML: AutoGen, LangGraph, pgvector, Neo4j GraphRAG, Groq LLM, RAG, Web Audio Lip-Sync) Tj
+0 -12 Td
+(Frontend: React 18/19, Next.js App Router, TypeScript, Tailwind CSS, Three.js, Canvas) Tj
+0 -12 Td
+(Backend: Python, FastAPI, Flask, Node.js, Express, C# ASP.NET Core, PostgreSQL, MongoDB, Redis, Docker) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000223 00000 n 
+0000001625 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1696
+%%EOF

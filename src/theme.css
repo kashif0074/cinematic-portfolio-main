@@ -1,0 +1,78 @@
+:root {
+  /* ------------------------------------------------------------------------
+     1. Main Theme Colors
+     ------------------------------------------------------------------------ */
+  --primary-background: #F4EDE0; /* Cream background */
+  --secondary-background: #F4EDE0; /* Cream for secondary sections */
+  --card-background: #FFFFFF;
+  --card-subtle-background: #F2F4F1;
+
+  /* ------------------------------------------------------------------------
+     2. Typography Colors
+     ------------------------------------------------------------------------ */
+  --primary-text: #14213D; /* Navy text */
+  --secondary-text: #14213D;
+  --muted-text: #5A5A5A;
+  --accent-text: #14213D;
+
+  /* ------------------------------------------------------------------------
+     3. Primary Button Colors
+     ------------------------------------------------------------------------ */
+  --button-primary: #14213D; /* Navy */
+  --button-text: #FFFFFF;
+  --button-hover: #2C4A6F;
+  --button-hover-text: #FFFFFF;
+
+  /* ------------------------------------------------------------------------
+     4. Secondary Button Colors
+     ------------------------------------------------------------------------ */
+  --button-secondary: #FFFFFF;
+  --button-secondary-text: #14213D;
+  --button-secondary-hover: #E5E9E4;
+
+  /* ------------------------------------------------------------------------
+     5. Borders & Dividers
+     ------------------------------------------------------------------------ */
+  --border-color: #E2E8F0;
+  --border-subtle: #D8D8D8;
+  --button-border: #14213D;
+
+  /* ------------------------------------------------------------------------
+     6. Accent & Interactive Elements
+     ------------------------------------------------------------------------ */
+  --accent-color: #14213D; /* Navy */
+  --accent-secondary: #2C4A6F; /* Slightly lighter navy */
+  --accent-light: rgba(20,33,61,0.08);
+  --accent-gold: #B45309;
+
+  /* ------------------------------------------------------------------------
+     7. 3D Architectural Project Doors
+     ------------------------------------------------------------------------ */
+  --door-primary: #14213D;
+  --door-secondary: #2C4A6F;
+  --door-accent: #F4EDE0;
+  --door-text: #F4EDE0;
+  --door-frame: #F4EDE0;
+
+  /* ------------------------------------------------------------------------
+     8. Shadows & Highlights
+     ------------------------------------------------------------------------ */
+  --shadow-sm: 0 2px 8px rgba(20,33,61,0.04);
+  --shadow-md: 0 10px 30px rgba(20,33,61,0.06);
+  --shadow-lg: 0 20px 50px rgba(20,33,61,0.10);
+  --selection-bg: #14213D;
+  --selection-text: #F4EDE0;
+}
+
+/* --------------------------------------------------------------------------
+   Global Body & Base Theme Binding
+   -------------------------------------------------------------------------- */
+html, body {
+  background-color: var(--primary-background);
+  color: var(--primary-text);
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-text);
+}
