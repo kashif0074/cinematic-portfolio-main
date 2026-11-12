@@ -78,6 +78,24 @@ html.lenis body {
   animation: ambientPulse 8s ease-in-out infinite;
 }
 
+/* Subtle moving text gradient */
+@keyframes gradientTravel {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient-travel {
+  background-size: 250% 100% !important;
+  animation: gradientTravel 8s ease-in-out infinite;
+}
+
 /* ================= 3. ACCESSIBILITY: REDUCED MOTION ================= */
 @media (prefers-reduced-motion: reduce) {
   *,

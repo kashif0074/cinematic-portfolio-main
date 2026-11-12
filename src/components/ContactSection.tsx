@@ -1,7 +1,6 @@
 // src/components/ContactSection.tsx
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Magnetic } from './Magnetic';
 import { animationConfig } from '../config/animationConfig';
 
 interface ContactItem {

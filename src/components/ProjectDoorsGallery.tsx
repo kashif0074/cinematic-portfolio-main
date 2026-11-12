@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Magnetic } from './Magnetic';
+import { CinematicDoorPortal } from './CinematicDoorPortal';
 
 export interface ProjectData {
   id: string;
@@ -517,7 +518,6 @@ export const projectsList: ProjectData[] = [
 
 export const ProjectDoorsGallery: React.FC = () => {
   const [openDoorId, setOpenDoorId] = useState<string | null>(null);
-  const [hoveredDoorId, setHoveredDoorId] = useState<string | null>(null);
   
   const realmRef = useRef<HTMLDivElement>(null);
 
@@ -555,7 +555,7 @@ export const ProjectDoorsGallery: React.FC = () => {
   return (
     <div className="w-full relative select-none">
       
-      {/* ================= 4 ARCHED DOORS ROW ================= */}
+      {/* ================= 4 CINEMATIC 3D ARCHITECTURAL DOORS ================= */}
       <motion.div 
         initial="hidden"
         whileInView="visible"
@@ -569,250 +569,32 @@ export const ProjectDoorsGallery: React.FC = () => {
             },
           },
         }}
-        className="flex flex-wrap items-end justify-center gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto relative z-10 px-2 sm:px-4"
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-6 lg:gap-6 justify-items-center max-w-6xl mx-auto relative z-10 px-2 sm:px-4"
       >
-        {projectsList.map((project) => {
-          const isOpen = openDoorId === project.id;
-          const isHovered = hoveredDoorId === project.id;
-
-          return (
-            <motion.div
-              key={project.id}
-              variants={{
-                hidden: { opacity: 0, y: 35, rotateX: 10 },
-                visible: {
-                  opacity: 1,
-                  y: 0,
-                  rotateX: 0,
-                  transition: {
-                    duration: 0.9,
-                    ease: [0.16, 1, 0.3, 1],
-                  },
+        {projectsList.map((project) => (
+          <motion.div
+            key={project.id}
+            variants={{
+              hidden: { opacity: 0, y: 35, rotateX: 10 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                rotateX: 0,
+                transition: {
+                  duration: 0.9,
+                  ease: [0.16, 1, 0.3, 1],
                 },
-              }}
-              className="relative flex flex-col items-center flex-shrink-0"
-              onMouseEnter={() => setHoveredDoorId(project.id)}
-              onMouseLeave={() => setHoveredDoorId(null)}
-              data-cursor="door"
-            >
-              {/* Outer Casing Frame */}
-              <div 
-                className="relative p-2 sm:p-2.5 rounded-t-full shadow-2xl transition-all duration-300 cursor-pointer"
-                style={{
-                  background: 'linear-gradient(180deg, #444A59 0%, #292E3B 45%, #181B24 100%)',
-                  boxShadow: isOpen 
-                    ? '0 24px 48px rgba(0,0,0,0.9), inset 0 1px 2px rgba(255,255,255,0.3)' 
-                    : '0 16px 32px rgba(0,0,0,0.7), inset 0 1px 2px rgba(255,255,255,0.22)',
-                  border: '1px solid rgba(255,255,255,0.14)',
-                }}
-                onClick={() => handleDoorClick(project.id)}
-              >
-                {/* Architectural Base Plinth Blocks (Left & Right) */}
-                <div 
-                  className="absolute -left-1 -bottom-0.5 w-3.5 sm:w-4 h-6 sm:h-7 rounded-xs z-30 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(180deg, #4A5162 0%, #2A2F3D 60%, #171A22 100%)',
-                    border: '1px solid rgba(255,255,255,0.18)',
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.3)',
-                  }}
-                />
-                <div 
-                  className="absolute -right-1 -bottom-0.5 w-3.5 sm:w-4 h-6 sm:h-7 rounded-xs z-30 pointer-events-none"
-                  style={{
-                    background: 'linear-gradient(180deg, #4A5162 0%, #2A2F3D 60%, #171A22 100%)',
-                    border: '1px solid rgba(255,255,255,0.18)',
-                    boxShadow: '0 4px 8px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.3)',
-                  }}
-                />
-
-                {/* Doorway Opening & 3D Perspective Stage */}
-                <div
-                  className="relative w-[150px] sm:w-[175px] md:w-[195px] lg:w-[215px] h-[340px] sm:h-[380px] md:h-[410px] lg:h-[435px] rounded-t-full overflow-hidden bg-[#0A0C13]"
-                  style={{
-                    perspective: '1200px',
-                  }}
-                >
-                  {/* Inside Chamber Preview */}
-                  <div className="absolute inset-0 w-full h-full rounded-t-full overflow-hidden z-0 flex flex-col justify-between p-4">
-                    <div 
-                      className="absolute -top-4 left-1/2 -translate-x-1/2 w-36 h-36 rounded-full pointer-events-none transition-opacity duration-500"
-                      style={{
-                        background: `radial-gradient(circle, ${project.doorColor.accent}55 0%, rgba(251,191,36,0.15) 50%, transparent 80%)`,
-                        opacity: isOpen ? 1 : 0,
-                      }}
-                    />
-
-                    <div className={`relative z-10 w-full h-full flex flex-col justify-between transition-opacity duration-300 ${
-                      isOpen ? 'opacity-100' : 'opacity-0'
-                    }`}>
-                      <div className="pt-6 border-b border-white/10 pb-1 flex items-center justify-between">
-                        <span 
-                          className="text-[8.5px] font-mono font-bold uppercase px-1.5 py-0.5 rounded-xs"
-                          style={{
-                            backgroundColor: `${project.doorColor.base}33`,
-                            color: project.doorColor.accent,
-                            border: `1px solid ${project.doorColor.base}66`,
-                          }}
-                        >
-                          DOOR 0{project.number}
-                        </span>
-                        <span className="text-[8px] font-mono text-emerald-400 font-bold tracking-widest flex items-center space-x-1">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                          <span>OPEN</span>
-                        </span>
-                      </div>
-
-                      <div className="my-auto py-1 text-center">
-                        <span className="block text-[8px] font-mono tracking-wider text-white/50 uppercase font-semibold mb-1">
-                          {project.category}
-                        </span>
-                        <h4 className="text-sm sm:text-base font-bold text-white mb-1 leading-snug">
-                          {project.title}
-                        </h4>
-                        <p className="text-[9.5px] text-neutral-300 line-clamp-3 mb-2 leading-relaxed">
-                          {project.summary}
-                        </p>
-                        <div className="inline-flex items-center space-x-1 px-2 py-0.5 rounded-xs bg-white/10 border border-white/15 text-[9px] font-mono tracking-wider text-amber-300 font-bold uppercase shadow-xs">
-                          <span>EXPLORE</span>
-                          <span>↓</span>
-                        </div>
-                      </div>
-
-                      <div className="pt-1 border-t border-white/10 flex items-center justify-between text-[8px] font-mono text-white/40 uppercase">
-                        <span>CLICK TO SHUT</span>
-                        <span className="text-white hover:text-amber-300 font-bold">✕</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 3D Arched Door Leaf */}
-                  <motion.div
-                    animate={{
-                      rotateY: isOpen ? 72 : isHovered ? 6 : 0,
-                    }}
-                    transition={{
-                      duration: 0.85,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    style={{
-                      transformOrigin: 'left center',
-                      transformStyle: 'preserve-3d',
-                    }}
-                    className="absolute inset-0 w-full h-full rounded-t-full z-20 overflow-hidden shadow-2xl"
-                  >
-                    <div
-                      className="relative w-full h-full rounded-t-full flex flex-col justify-between overflow-hidden"
-                      style={{
-                        background: `linear-gradient(180deg, ${project.doorColor.light} 0%, ${project.doorColor.base} 45%, ${project.doorColor.dark} 100%)`,
-                        boxShadow: 'inset 0 2px 4px rgba(255,255,255,0.45), inset -2px 0 4px rgba(0,0,0,0.5)',
-                        borderRight: '2px solid rgba(0,0,0,0.45)',
-                      }}
-                    >
-                      {/* Left Brass Hinge Plates */}
-                      <div className="absolute left-0.5 top-16 w-1.5 h-6 bg-gradient-to-r from-[#D4AF37] to-[#AA820A] rounded-l-xs border-l border-y border-white/60 shadow-xs z-30 pointer-events-none">
-                        <div className="absolute top-1 left-0.5 w-0.5 h-0.5 rounded-full bg-[#5C4505]" />
-                        <div className="absolute bottom-1 left-0.5 w-0.5 h-0.5 rounded-full bg-[#5C4505]" />
-                      </div>
-                      <div className="absolute left-0.5 bottom-16 w-1.5 h-6 bg-gradient-to-r from-[#D4AF37] to-[#AA820A] rounded-l-xs border-l border-y border-white/60 shadow-xs z-30 pointer-events-none">
-                        <div className="absolute top-1 left-0.5 w-0.5 h-0.5 rounded-full bg-[#5C4505]" />
-                        <div className="absolute bottom-1 left-0.5 w-0.5 h-0.5 rounded-full bg-[#5C4505]" />
-                      </div>
-
-                      {/* Fluted Vertical Ribs / Architectural Reeded Texture */}
-                      <div 
-                        className="absolute inset-0 pointer-events-none opacity-30"
-                        style={{
-                          backgroundImage: `repeating-linear-gradient(90deg, transparent, transparent 7px, rgba(0,0,0,0.25) 7px, rgba(0,0,0,0.25) 8.5px, rgba(255,255,255,0.15) 8.5px, rgba(255,255,255,0.15) 9.5px)`,
-                        }}
-                      />
-
-                      {/* Inner Arched Routed Molding Line */}
-                      <div 
-                        className="absolute inset-2 sm:inset-2.5 rounded-t-full pointer-events-none"
-                        style={{
-                          border: '1.5px solid rgba(0,0,0,0.35)',
-                          boxShadow: 'inset 0 2px 4px rgba(0,0,0,0.4), 0 1px 1px rgba(255,255,255,0.25)',
-                        }}
-                      />
-
-                      {/* Gold Brass Nameplate */}
-                      <div className="relative z-10 w-full flex justify-center pt-16 sm:pt-20">
-                        <div 
-                          className="relative w-[84%] max-w-[155px] h-7 sm:h-7.5 rounded-xs flex items-center justify-center px-2 shadow-md transition-transform duration-300"
-                          style={{
-                            background: 'linear-gradient(135deg, #FFF7D2 0%, #E8C159 28%, #A87E18 55%, #FDECA4 82%, #C79523 100%)',
-                            border: '1px solid #FFEAA0',
-                            boxShadow: '0 2px 6px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.9), inset 0 -1px 1px rgba(0,0,0,0.4)',
-                          }}
-                        >
-                          {/* Brass Screws */}
-                          <div className="absolute left-1.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#6D4F07] border border-[#FFE79A] flex items-center justify-center">
-                            <div className="w-1 h-[0.5px] bg-[#3B2801]" />
-                          </div>
-                          <div className="absolute right-1.5 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-[#6D4F07] border border-[#FFE79A] flex items-center justify-center">
-                            <div className="w-1 h-[0.5px] bg-[#3B2801]" />
-                          </div>
-
-                          <span 
-                            className="text-[7.5px] sm:text-[8px] font-sans font-black tracking-[0.15em] uppercase text-[#382502] text-center truncate select-none"
-                            style={{
-                              textShadow: '0 1px 0 rgba(255,255,255,0.5)',
-                            }}
-                          >
-                            {project.plaque}
-                          </span>
-                        </div>
-                      </div>
-
-                      <div className="my-auto" />
-
-                      {/* Brass Lever Handle & Keyhole (Right Edge) */}
-                      <div className="absolute right-2.5 sm:right-3 top-[56%] -translate-y-1/2 flex flex-col items-center z-20 pointer-events-none">
-                        {/* Round Rosette Backplate */}
-                        <div 
-                          className="w-4 h-4 rounded-full shadow-md flex items-center justify-center"
-                          style={{
-                            background: 'linear-gradient(135deg, #FFF0B0, #DCA92E, #8C6207)',
-                            border: '0.6px solid #FFF5D0',
-                            boxShadow: '0 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.6)',
-                          }}
-                        >
-                          <div className="w-1.5 h-1.5 rounded-full bg-[#6A4703]" />
-                        </div>
-
-                        {/* Horizontal Lever Handle */}
-                        <div 
-                          className="w-8 sm:w-9 h-2.5 -mt-3.5 mr-5 rounded-r-full shadow-md origin-left transform transition-transform duration-300"
-                          style={{
-                            background: 'linear-gradient(180deg, #FFF9DA 0%, #E4B53E 35%, #9E6E0F 80%, #684603 100%)',
-                            boxShadow: '0 3px 6px rgba(0,0,0,0.6), inset 0 1px 1px rgba(255,255,255,0.7)',
-                            transform: isHovered && !isOpen ? 'rotate(7deg)' : 'rotate(0deg)',
-                          }}
-                        />
-
-                        {/* Escutcheon Keyhole Plate */}
-                        <div 
-                          className="w-2.5 h-4 rounded-xs mt-1 shadow-xs flex flex-col items-center justify-center p-0.5"
-                          style={{
-                            background: 'linear-gradient(135deg, #FFE89C, #C9961F, #825C07)',
-                            border: '0.5px solid #FFF5D0',
-                          }}
-                        >
-                          <div className="w-1 h-1 rounded-full bg-[#201401]" />
-                          <div className="w-0.5 h-1.5 bg-[#201401] -mt-0.5 rounded-b-xs" />
-                        </div>
-                      </div>
-
-                      <div className="p-3" />
-                    </div>
-                  </motion.div>
-                </div>
-              </div>
-
-              <div className="w-full max-w-[190px] h-2 mt-1 rounded-full bg-black/60 blur-xs pointer-events-none" />
-            </motion.div>
-          );
-        })}
+              },
+            }}
+            className="w-full flex justify-center"
+          >
+            <CinematicDoorPortal
+              project={project}
+              isSelected={openDoorId === project.id}
+              onSelect={() => handleDoorClick(project.id)}
+            />
+          </motion.div>
+        ))}
       </motion.div>
 
       {/* ================= 2. PROJECT REVEAL REALM ================= */}

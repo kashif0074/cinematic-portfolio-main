@@ -8,27 +8,32 @@ import { ContactSection } from './components/ContactSection';
 import { CustomCursor } from './components/CustomCursor';
 import { SmoothScroll } from './components/SmoothScroll';
 import { Chatbot } from './components/Chatbot';
+import { ThemeProvider } from './context/ThemeContext';
+import { ThemePullCord } from './components/ThemePullCord';
 
 function App() {
   return (
-    <SmoothScroll>
-      <div
-        className="w-full min-h-screen antialiased selection:bg-[#14213D] selection:text-[#F4EDE0]"
-        style={{
-          backgroundColor: 'var(--primary-background)',
-          color: 'var(--primary-text)',
-        }}
-      >
-        <CustomCursor />
-        <Chatbot />
-        <HeroSection />
-        <AboutSection />
-        <ProjectsSection />
-        <SkillsSection />
-        <ExperienceSection />
-        <ContactSection />
-      </div>
-    </SmoothScroll>
+    <ThemeProvider>
+      <SmoothScroll>
+        <div
+          className="w-full min-h-screen antialiased selection:bg-[#668CFF] selection:text-[#080B12]"
+          style={{
+            backgroundColor: 'var(--primary-background)',
+            color: 'var(--primary-text)',
+          }}
+        >
+          <ThemePullCord />
+          <CustomCursor />
+          <Chatbot />
+          <HeroSection />
+          <AboutSection />
+          <ProjectsSection />
+          <SkillsSection />
+          <ExperienceSection />
+          <ContactSection />
+        </div>
+      </SmoothScroll>
+    </ThemeProvider>
   );
 }
 

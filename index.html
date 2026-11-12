@@ -1,14 +1,33 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Kashif Shahzad – AI Automation Engineer and Full-Stack Developer specializing in scalable web apps, multi-agent orchestration, RAG architectures, and healthcare technology." />
-    <meta name="theme-color" content="#14213D" />
+    <meta name="theme-color" content="#080B12" />
     <meta property="og:title" content="Kashif Shahzad | AI &amp; Full Stack Engineer" />
     <meta property="og:description" content="Explore production-grade agentic AI architectures, full-stack web platforms, and intelligent healthcare technology." />
     <meta property="og:type" content="website" />
+
+    <!-- Anti-Flash Theme Initializer (Defaults to Dark Mode) -->
+    <script>
+      (function() {
+        try {
+          var saved = localStorage.getItem('portfolio_theme');
+          if (saved === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.setAttribute('data-theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
+          }
+        } catch (e) {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">

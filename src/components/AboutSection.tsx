@@ -3,6 +3,7 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import aboutImg from '../assets/IMG_9554.png';
 import { animationConfig } from '../config/animationConfig';
+import { ContinuousWriter } from './ContinuousWriter';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },

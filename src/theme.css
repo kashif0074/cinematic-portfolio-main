@@ -1,9 +1,9 @@
 :root {
   /* ------------------------------------------------------------------------
-     1. Main Theme Colors
+     1. Main Theme Colors (Light Mode)
      ------------------------------------------------------------------------ */
   --primary-background: #F4EDE0; /* Cream background */
-  --secondary-background: #F4EDE0; /* Cream for secondary sections */
+  --secondary-background: #EDE6D8; /* Slightly deeper cream for contrast */
   --card-background: #FFFFFF;
   --card-subtle-background: #F2F4F1;
 
@@ -41,35 +41,77 @@
      6. Accent & Interactive Elements
      ------------------------------------------------------------------------ */
   --accent-color: #14213D; /* Navy */
-  --accent-secondary: #2C4A6F; /* Slightly lighter navy */
-  --accent-light: rgba(20,33,61,0.08);
+  --accent-secondary: #2C4A6F;
+  --accent-light: rgba(20, 33, 61, 0.08);
   --accent-gold: #B45309;
+  --blue-accent: #2563EB;
+  --teal-accent: #0D9488;
 
   /* ------------------------------------------------------------------------
-     7. 3D Architectural Project Doors
+     7. Shadows & Highlights
      ------------------------------------------------------------------------ */
-  --door-primary: #14213D;
-  --door-secondary: #2C4A6F;
-  --door-accent: #F4EDE0;
-  --door-text: #F4EDE0;
-  --door-frame: #F4EDE0;
-
-  /* ------------------------------------------------------------------------
-     8. Shadows & Highlights
-     ------------------------------------------------------------------------ */
-  --shadow-sm: 0 2px 8px rgba(20,33,61,0.04);
-  --shadow-md: 0 10px 30px rgba(20,33,61,0.06);
-  --shadow-lg: 0 20px 50px rgba(20,33,61,0.10);
+  --shadow-sm: 0 2px 8px rgba(20, 33, 61, 0.04);
+  --shadow-md: 0 10px 30px rgba(20, 33, 61, 0.06);
+  --shadow-lg: 0 20px 50px rgba(20, 33, 61, 0.10);
   --selection-bg: #14213D;
   --selection-text: #F4EDE0;
 }
 
 /* --------------------------------------------------------------------------
-   Global Body & Base Theme Binding
+   Dark Mode Colour Tokens (User Specified)
+   Default mode: Dark
+   -------------------------------------------------------------------------- */
+:root.dark,
+html.dark,
+[data-theme="dark"] {
+  /* User-defined dark tokens */
+  --primary-background: #080B12;
+  --secondary-background: #0D1420;
+  --card-background: #121D2B;
+  --card-subtle-background: #0D1420;
+
+  --border-color: #26364A;
+  --border-subtle: #26364A;
+  --button-border: #26364A;
+
+  --primary-text: #F4F7FB;
+  --secondary-text: #98A7B9;
+  --muted-text: #72849A;
+  --accent-text: #668CFF;
+
+  --blue-accent: #668CFF;
+  --teal-accent: #35D6BE;
+
+  --accent-color: #668CFF;
+  --accent-secondary: #35D6BE;
+  --accent-light: rgba(102, 140, 255, 0.12);
+  --accent-gold: #35D6BE;
+
+  /* Dark mode buttons */
+  --button-primary: #668CFF;
+  --button-text: #080B12;
+  --button-hover: #4E76FC;
+  --button-hover-text: #FFFFFF;
+
+  --button-secondary: #121D2B;
+  --button-secondary-text: #F4F7FB;
+  --button-secondary-hover: #192738;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.8);
+  --selection-bg: #668CFF;
+  --selection-text: #080B12;
+}
+
+/* --------------------------------------------------------------------------
+   Global Body & Base Theme Binding with Smooth Transitions
    -------------------------------------------------------------------------- */
 html, body {
   background-color: var(--primary-background);
   color: var(--primary-text);
+  transition: background-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 ::selection {
