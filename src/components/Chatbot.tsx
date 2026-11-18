@@ -75,7 +75,7 @@ export const Chatbot: React.FC = () => {
     setIsTyping(true);
 
     try {
-      const { text, sources } = await generateRAGResponse(query);
+      const { text, sources } = await generateRAGResponse(query, messages);
       const assistantMsgId = 'ai-' + Date.now();
 
       const responseSources = sources.map((s) => ({
@@ -142,17 +142,25 @@ export const Chatbot: React.FC = () => {
           if (!line || !line.trim()) return <div key={idx} className="h-1" />;
 
           // Headers
-          if (line.startsWith('### ')) {
+          if (line.startsWith('### ') || line.startsWith('## ') || line.startsWith('# ')) {
+            const headingText = line.replace(/^#{1,3}\s+/, '');
             return (
               <h4 key={idx} className="font-semibold text-slate-900 text-[13px] mt-2 mb-1">
-                {line.replace('### ', '')}
+                {headingText}
               </h4>
             );
           }
 
-          // Bullet points
+          // Bullet points & Numbered lists
           const isBullet = line.startsWith('- ') || line.startsWith('* ');
-          const formattedLine = line.replace(/^[-*]\s+/, '');
+          const numberMatch = line.match(/^(\d+)\.\s+/);
+          const isNumbered = Boolean(numberMatch);
+
+          const formattedLine = isBullet
+            ? line.replace(/^[-*]\s+/, '')
+            : isNumbered
+            ? line.replace(/^\d+\.\s+/, '')
+            : line;
 
           const parts = formattedLine.split(/(\*\*.*?\*\*|`.*?`|\[.*?\]\(.*?\))/g);
 
@@ -190,12 +198,27 @@ export const Chatbot: React.FC = () => {
             return part;
           });
 
-          return isBullet ? (
-            <div key={idx} className="flex items-start space-x-2 pl-1">
-              <span className="text-slate-400 mt-1 text-xs">•</span>
-              <span className="text-slate-700">{content}</span>
-            </div>
-          ) : (
+          if (isBullet) {
+            return (
+              <div key={idx} className="flex items-start space-x-2 pl-1">
+                <span className="text-slate-400 mt-1 text-xs">•</span>
+                <span className="text-slate-700">{content}</span>
+              </div>
+            );
+          }
+
+          if (isNumbered && numberMatch) {
+            return (
+              <div key={idx} className="flex items-start space-x-2 pl-1">
+                <span className="text-slate-500 font-mono text-xs font-semibold min-w-[14px]">
+                  {numberMatch[1]}.
+                </span>
+                <span className="text-slate-700">{content}</span>
+              </div>
+            );
+          }
+
+          return (
             <p key={idx} className="text-slate-700">{content}</p>
           );
         })}

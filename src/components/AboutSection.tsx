@@ -3,7 +3,6 @@ import { motion, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import aboutImg from '../assets/IMG_9554.png';
 import { animationConfig } from '../config/animationConfig';
-import { ContinuousWriter } from './ContinuousWriter';
 
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
@@ -40,8 +39,8 @@ export const AboutSection: React.FC = () => {
   const spotlightY = useMotionValue(200);
 
   // 2. Springs for 3D Physics
-  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [14, -14]), { damping: 20, stiffness: 200 });
-  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-14, 14]), { damping: 20, stiffness: 200 });
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [7, -7]), { damping: 25, stiffness: 180 });
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-7, 7]), { damping: 25, stiffness: 180 });
 
   // 3. Top-Level Unconditional Transform for Spotlight Background
   const spotlightBg = useTransform(
@@ -161,19 +160,10 @@ export const AboutSection: React.FC = () => {
               }}
             >
               <p>
-                I'm <span className="font-bold" style={{ color: 'var(--primary-text)' }}>Kashif Shahzad</span>, an AI Automation Engineer and Full-Stack Developer passionate about building intelligent software solutions that solve real-world problems.
+                I'm <span className="font-bold" style={{ color: 'var(--primary-text)' }}>Kashif Shahzad</span>, an AI Engineer and Full-Stack Developer building scalable web and mobile applications, SaaS platforms, and intelligent automation systems. While I deliver software solutions across multiple industries, I have deep specialized expertise in healthcare technology and Remote Patient Monitoring (RPM).
               </p>
               <p>
-                I specialize in developing scalable web applications, AI-powered automation systems, and SaaS platforms, with a particular focus on healthcare technology and Remote Patient Monitoring (RPM).
-              </p>
-              <p>
-                With hands-on experience in React, Next.js, TypeScript, Node.js, Python, and modern database technologies, I work across the full software development lifecycle — from designing intuitive user interfaces to building secure backend systems and integrating advanced AI capabilities.
-              </p>
-              <p>
-                My experience includes developing conversational AI assistants, integrating LLMs and voice-enabled avatars, building REST APIs, and creating intelligent automation workflows for healthcare applications.
-              </p>
-              <p>
-                I believe in combining modern engineering practices with innovative AI technologies to create impactful, reliable, and user-focused digital products.
+                Across the full development lifecycle, I engineer production-grade systems using <span className="font-semibold" style={{ color: 'var(--primary-text)' }}>React, Next.js, TypeScript, Node.js, Python, Docker, and CI/CD pipelines</span>. My core focus lies in deploying agentic AI workflows, autonomous AI agents, LLM integrations, and voice-enabled avatars to automate complex processes and deliver high-impact digital products.
               </p>
             </motion.div>
 
@@ -331,26 +321,6 @@ export const AboutSection: React.FC = () => {
                 border: '1px solid var(--border-subtle)',
               }}
             >
-              {/* Corner Accent Brackets */}
-              <div className="pointer-events-none">
-                <div 
-                  className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 transition-transform duration-500 group-hover:-translate-x-1 group-hover:-translate-y-1"
-                  style={{ borderColor: 'var(--accent-color)' }}
-                />
-                <div 
-                  className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1"
-                  style={{ borderColor: 'var(--accent-color)' }}
-                />
-                <div 
-                  className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 transition-transform duration-500 group-hover:-translate-x-1 group-hover:translate-y-1"
-                  style={{ borderColor: 'var(--accent-color)' }}
-                />
-                <div 
-                  className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1"
-                  style={{ borderColor: 'var(--accent-color)' }}
-                />
-              </div>
-
               {/* Portrait Image Canvas */}
               <div 
                 className="relative overflow-hidden w-full max-w-[390px] aspect-[4/5] rounded-sm"

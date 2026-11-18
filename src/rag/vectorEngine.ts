@@ -1,13 +1,18 @@
-import { KNOWLEDGE_CHUNKS, type KnowledgeChunk } from './knowledgeChunks';
+import { KNOWLEDGE_CHUNKS, type KnowledgeChunk, type ChunkCategory } from './knowledgeChunks';
 
 export interface RetrievedResult {
   chunk: KnowledgeChunk;
   score: number;
 }
 
-/**
- * Stop words filtered out during vectorization
- */
+export interface HybridSearchOptions {
+  query: string;
+  categoryFilter?: ChunkCategory[];
+  idFilter?: string[];
+  topK?: number;
+  minScore?: number;
+}
+
 const STOP_WORDS = new Set([
   'a', 'about', 'above', 'after', 'again', 'against', 'all', 'am', 'an', 'and', 'any', 'are', 'aren',
   'as', 'at', 'be', 'because', 'been', 'before', 'being', 'below', 'between', 'both', 'but', 'by',
@@ -22,19 +27,15 @@ const STOP_WORDS = new Set([
   'your', 'yours', 'yourself', 'yourselves',
 ]);
 
-/**
- * Tokenize string into clean normalized terms and n-grams
- */
 function tokenize(text: string): string[] {
   const clean = text
     .toLowerCase()
     .replace(/https?:\/\/[^\s]+/g, ' ')
     .replace(/[^a-z0-9_.\-#+]/g, ' ');
-  
+
   const rawTokens = clean.split(/\s+/).filter((t) => t.length > 1 && !STOP_WORDS.has(t));
   const tokens: string[] = [...rawTokens];
 
-  // Bigrams for key technical compounds (e.g., 'next js', 'web audio', 'pgvector')
   for (let i = 0; i < rawTokens.length - 1; i++) {
     tokens.push(`${rawTokens[i]}_${rawTokens[i + 1]}`);
   }
@@ -42,9 +43,6 @@ function tokenize(text: string): string[] {
   return tokens;
 }
 
-/**
- * In-browser Vector Space Model & RAG Index
- */
 export class VectorRAGIndex {
   private chunks: KnowledgeChunk[];
   private vocabulary: Map<string, number> = new Map();
@@ -56,18 +54,13 @@ export class VectorRAGIndex {
     this.buildIndex();
   }
 
-  /**
-   * Build vocabulary, inverse document frequencies, and unit chunk vectors
-   */
   private buildIndex() {
     const docTermFreqs: Map<string, number>[] = [];
     const docCount = this.chunks.length;
 
-    // 1. Compute Term Frequencies per chunk (weighted by title, tags, and content)
     this.chunks.forEach((chunk) => {
       const tf = new Map<string, number>();
 
-      // Heavy weight for title and tags
       const titleTokens = tokenize(chunk.title);
       titleTokens.forEach((t) => tf.set(t, (tf.get(t) || 0) + 4));
 
@@ -76,13 +69,11 @@ export class VectorRAGIndex {
         tagTokens.forEach((t) => tf.set(t, (tf.get(t) || 0) + 3));
       });
 
-      // Content tokens
       const contentTokens = tokenize(chunk.content);
       contentTokens.forEach((t) => tf.set(t, (tf.get(t) || 0) + 1));
 
       docTermFreqs.push(tf);
 
-      // Register vocabulary
       tf.forEach((_, term) => {
         if (!this.vocabulary.has(term)) {
           this.vocabulary.set(term, this.vocabulary.size);
@@ -90,18 +81,15 @@ export class VectorRAGIndex {
       });
     });
 
-    // 2. Compute Inverse Document Frequencies (IDF)
     this.vocabulary.forEach((_, term) => {
       let containingDocs = 0;
       docTermFreqs.forEach((tf) => {
         if (tf.has(term)) containingDocs++;
       });
-      // Standard smooth IDF formula
       const idfScore = Math.log((docCount + 1) / (containingDocs + 1)) + 1;
       this.idf.set(term, idfScore);
     });
 
-    // 3. Construct L2-normalized vector embeddings for each document chunk
     const vocabSize = this.vocabulary.size;
     this.chunkVectors = docTermFreqs.map((tf) => {
       const vector = new Array(vocabSize).fill(0);
@@ -110,21 +98,16 @@ export class VectorRAGIndex {
       tf.forEach((count, term) => {
         const index = this.vocabulary.get(term)!;
         const idfVal = this.idf.get(term) || 1;
-        // Sublinear TF-IDF formula
         const weight = (1 + Math.log(count)) * idfVal;
         vector[index] = weight;
         normSq += weight * weight;
       });
 
-      // Normalize to unit vector for fast cosine similarity via dot product
       const norm = Math.sqrt(normSq) || 1;
       return vector.map((w) => w / norm);
     });
   }
 
-  /**
-   * Embed query string into the indexed vector space
-   */
   private embedQuery(query: string): number[] {
     const vocabSize = this.vocabulary.size;
     const vector = new Array(vocabSize).fill(0);
@@ -150,9 +133,6 @@ export class VectorRAGIndex {
     return vector.map((w) => w / norm);
   }
 
-  /**
-   * Cosine similarity dot product between two normalized vectors
-   */
   private dotProduct(vecA: number[], vecB: number[]): number {
     let dot = 0;
     for (let i = 0; i < vecA.length; i++) {
@@ -164,44 +144,79 @@ export class VectorRAGIndex {
   }
 
   /**
-   * Semantic Vector Search + Entity-Aware Re-ranking
-   * Returns top-k most relevant KnowledgeChunks
+   * Metadata-Filtered Hybrid Retrieval with Multi-Factor Reranking
    */
-  public search(query: string, topK: number = 3): RetrievedResult[] {
-    const queryVec = this.embedQuery(query);
-    const lowerQuery = query.toLowerCase();
+  public searchHybrid(options: HybridSearchOptions): RetrievedResult[] {
+    const { query, categoryFilter, idFilter, topK = 3, minScore = 0.08 } = options;
+    const lowerQuery = query.toLowerCase().trim();
+    const queryVec = this.embedQuery(lowerQuery);
+    const queryWords = lowerQuery.split(/\s+/).filter((w) => w.length > 2);
 
-    const scored: RetrievedResult[] = this.chunks.map((chunk, idx) => {
-      let score = this.dotProduct(queryVec, this.chunkVectors[idx]);
+    // 1. Filter candidates by metadata
+    const candidates = this.chunks
+      .map((chunk, index) => ({ chunk, index }))
+      .filter(({ chunk }) => {
+        if (idFilter && idFilter.length > 0) {
+          return idFilter.includes(chunk.id);
+        }
+        if (categoryFilter && categoryFilter.length > 0) {
+          return categoryFilter.includes(chunk.category);
+        }
+        return true;
+      });
 
-      // Direct entity boosting for exact mentions
+    // 2. Score candidates using vector dot product + keyword boost
+    const scored: RetrievedResult[] = candidates.map(({ chunk, index }) => {
+      const vectorScore = this.dotProduct(queryVec, this.chunkVectors[index]);
+
+      // Lexical term overlap in title and tags
+      let lexicalBonus = 0;
       const titleLower = chunk.title.toLowerCase();
-      if (lowerQuery.includes('leadlens') && titleLower.includes('leadlens')) score += 0.45;
-      if (lowerQuery.includes('job tracker') && titleLower.includes('job tracker')) score += 0.45;
-      if ((lowerQuery.includes('ava') || lowerQuery.includes('avatar')) && titleLower.includes('avatar')) score += 0.45;
-      if (lowerQuery.includes('cms') && titleLower.includes('cms')) score += 0.45;
-      if (lowerQuery.includes('gym') && titleLower.includes('gym')) score += 0.45;
-      if ((lowerQuery.includes('prime') || lowerQuery.includes('healthcares')) && titleLower.includes('prime')) score += 0.45;
-      if ((lowerQuery.includes('evitals') || lowerQuery.includes('rpm')) && titleLower.includes('evitals')) score += 0.45;
-      if ((lowerQuery.includes('revive') || lowerQuery.includes('experience') || lowerQuery.includes('work')) && chunk.category === 'experience') score += 0.25;
-      if ((lowerQuery.includes('skills') || lowerQuery.includes('technologies') || lowerQuery.includes('stack')) && chunk.category === 'skills') score += 0.3;
-      if ((lowerQuery.includes('contact') || lowerQuery.includes('hire') || lowerQuery.includes('email')) && chunk.category === 'contact') score += 0.35;
-      if ((lowerQuery.includes('who are you') || lowerQuery.includes('about you') || lowerQuery.includes('who is kashif')) && chunk.id === 'bio-intro') score += 0.4;
+      const tagLower = chunk.tags.map((t) => t.toLowerCase());
 
-      return { chunk, score };
+      queryWords.forEach((word) => {
+        if (titleLower.includes(word)) lexicalBonus += 0.25;
+        if (tagLower.some((t) => t === word || t.includes(word))) lexicalBonus += 0.2;
+      });
+
+      // Specific entity boosts
+      if (lowerQuery.includes('database') && chunk.category === 'skills_database') lexicalBonus += 0.4;
+      if (lowerQuery.includes('backend') && chunk.category === 'skills_backend') lexicalBonus += 0.4;
+      if (lowerQuery.includes('frontend') && chunk.category === 'skills_frontend') lexicalBonus += 0.4;
+      if (lowerQuery.includes('major') && chunk.category === 'major') lexicalBonus += 0.45;
+      if (lowerQuery.includes('revive') && chunk.id === 'exp-revive') lexicalBonus += 0.5;
+      if (lowerQuery.includes('daraz') && chunk.id === 'exp-daraz') lexicalBonus += 0.5;
+      if (lowerQuery.includes('leadlens') && chunk.subcategory === 'leadlens') lexicalBonus += 0.5;
+      if (lowerQuery.includes('job tracker') && chunk.subcategory === 'job-tracker') lexicalBonus += 0.5;
+      if (lowerQuery.includes('avatar') && chunk.subcategory === 'avatar-chat') lexicalBonus += 0.5;
+      if (lowerQuery.includes('cms') && chunk.subcategory === 'cms') lexicalBonus += 0.5;
+
+      const totalScore = vectorScore * 0.5 + lexicalBonus;
+      return { chunk, score: totalScore };
     });
 
-    // Sort descending by relevance score
-    scored.sort((a, b) => b.score - a.score);
+    // 3. Filter by minimum score and deduplicate by chunk ID
+    const valid = scored.filter((r) => r.score >= minScore);
+    valid.sort((a, b) => b.score - a.score);
 
-    return scored.slice(0, topK);
+    // Deduplicate
+    const seenIds = new Set<string>();
+    const deduplicated: RetrievedResult[] = [];
+    for (const r of valid) {
+      if (!seenIds.has(r.chunk.id)) {
+        seenIds.add(r.chunk.id);
+        deduplicated.push(r);
+      }
+    }
+
+    return deduplicated.slice(0, topK);
   }
 
   /**
    * Retrieve formatted augmented context for LLM response generation
    */
-  public getAugmentedContext(query: string, topK: number = 3): { contextText: string; results: RetrievedResult[] } {
-    const results = this.search(query, topK);
+  public getAugmentedContext(options: HybridSearchOptions): { contextText: string; results: RetrievedResult[] } {
+    const results = this.searchHybrid(options);
     const contextText = results
       .map((r, i) => `[DOCUMENT CHUNK ${i + 1}: ${r.chunk.title} (Source: ${r.chunk.source})]\n${r.chunk.content}`)
       .join('\n\n');
@@ -210,5 +225,4 @@ export class VectorRAGIndex {
   }
 }
 
-// Singleton RAG Index instance
 export const ragIndex = new VectorRAGIndex();

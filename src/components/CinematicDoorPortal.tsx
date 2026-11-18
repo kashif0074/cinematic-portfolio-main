@@ -400,24 +400,6 @@ export const CinematicDoorPortal: React.FC<CinematicDoorPortalProps> = ({
               }}
             />
 
-            {/* Left Brass Plaque (Roman / Door Number) */}
-            <div className="absolute top-20 right-2 left-3 flex justify-center z-20">
-              <div
-                className="w-full max-w-[85px] h-6 rounded-xs flex items-center justify-center px-1 shadow-md"
-                style={{
-                  background:
-                    'linear-gradient(135deg, #FFF7D2 0%, #E8C159 28%, #A87E18 55%, #FDECA4 82%, #C79523 100%)',
-                  border: '1px solid #FFEAA0',
-                  boxShadow:
-                    '0 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.9), inset 0 -1px 1px rgba(0,0,0,0.4)',
-                }}
-              >
-                <span className="text-[7.5px] font-sans font-black tracking-widest uppercase text-[#382502] truncate">
-                  DOOR 0{project.number}
-                </span>
-              </div>
-            </div>
-
             {/* Left Brass Pull Ring (Center Meeting Stile) */}
             <div className="absolute right-2 top-[56%] -translate-y-1/2 flex items-center justify-center z-20 pointer-events-none">
               <div
@@ -474,9 +456,9 @@ export const CinematicDoorPortal: React.FC<CinematicDoorPortalProps> = ({
             />
 
             {/* Right Brass Plaque (Category / Badge) */}
-            <div className="absolute top-20 left-2 right-3 flex justify-center z-20">
+            <div className="absolute top-20 left-1.5 right-2.5 flex justify-center z-20">
               <div
-                className="w-full max-w-[85px] h-6 rounded-xs flex items-center justify-center px-1 shadow-md"
+                className="w-full max-w-[92px] h-6 rounded-xs flex items-center justify-center px-1.5 shadow-md"
                 style={{
                   background:
                     'linear-gradient(135deg, #FFF7D2 0%, #E8C159 28%, #A87E18 55%, #FDECA4 82%, #C79523 100%)',
@@ -485,7 +467,7 @@ export const CinematicDoorPortal: React.FC<CinematicDoorPortalProps> = ({
                     '0 2px 4px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.9), inset 0 -1px 1px rgba(0,0,0,0.4)',
                 }}
               >
-                <span className="text-[7.5px] font-sans font-black tracking-widest uppercase text-[#382502] truncate">
+                <span className="text-[7.5px] font-sans font-black tracking-wider uppercase text-[#382502] truncate">
                   {project.plaque}
                 </span>
               </div>

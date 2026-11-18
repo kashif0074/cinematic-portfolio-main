@@ -53,7 +53,7 @@ const journey: RouteStop[] = [
   },
   {
     id: '02',
-    year: 'MAY 2022 – APRIL 2025',
+    year: 'MARCH 2022 – DEC 2024',
     title: 'LOGISTICS ASSISTANT',
     organization: 'DARAZ PAKISTAN',
     badge: 'PREVIOUS EXPERIENCE',

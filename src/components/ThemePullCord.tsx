@@ -65,7 +65,7 @@ export const ThemePullCord: React.FC = () => {
   };
 
   return (
-    <div className="fixed top-0 right-5 sm:right-10 lg:right-16 z-50 pointer-events-auto select-none flex flex-col items-center">
+    <div className="hidden md:flex fixed top-0 right-10 lg:right-16 z-50 pointer-events-auto select-none flex-col items-center">
       
       {/* ================= 1. AMBIENT LIGHT BURST ON PULL ================= */}
       <AnimatePresence>

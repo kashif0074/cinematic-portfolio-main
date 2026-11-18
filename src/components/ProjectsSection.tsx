@@ -31,12 +31,6 @@ export const ProjectsSection: React.FC = () => {
           transition={{ duration: animationConfig.durations.slow, ease: animationConfig.easings.luxury }}
           className="text-center mb-10 sm:mb-14"
         >
-          <span 
-            className="text-[11px] font-mono tracking-[0.35em] uppercase font-semibold block mb-2"
-            style={{ color: 'var(--blue-accent)' }}
-          >
-            FEATURED ARCHITECTURES
-          </span>
           <h2 
             className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight select-none"
             style={{ color: 'var(--primary-text)' }}

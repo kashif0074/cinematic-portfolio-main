@@ -14,7 +14,6 @@ interface SkillCategory {
   id: string;
   title: string;
   badge: string;
-  icon: string;
   stat: string;
   summary: string;
   colSpan: string;
@@ -26,45 +25,42 @@ const skillCategories: SkillCategory[] = [
     id: 'ai',
     title: 'AI & AUTOMATION',
     badge: 'CORE INTELLIGENCE',
-    icon: '⚡',
     stat: 'AGENTIC & RAG',
     summary:
       'Designing autonomous multi-agent pipelines, vector retrieval RAG architectures, LLM fine-tuning and tool calling, predictive machine learning models, and enterprise workflow automation.',
     colSpan: 'lg:col-span-7',
     items: [
       { name: 'LLM Integration', level: 96, status: 'EXPERT' },
-      { name: 'RAG', level: 95, status: 'EXPERT' },
-      { name: 'AI Agents', level: 94, status: 'EXPERT' },
+      { name: 'RAG & Vector Search', level: 95, status: 'EXPERT' },
+      { name: 'Autonomous AI Agents', level: 94, status: 'EXPERT' },
       { name: 'Machine Learning', level: 90, status: 'ADVANCED' },
       { name: 'Scikit-learn', level: 88, status: 'ADVANCED' },
-      { name: 'Pandas', level: 92, status: 'ADVANCED' },
-      { name: 'AI Workflow Automation', level: 95, status: 'EXPERT' },
+      { name: 'Pandas & Data Analysis', level: 92, status: 'ADVANCED' },
+      { name: 'Workflow Automation', level: 95, status: 'EXPERT' },
     ],
   },
   {
     id: 'frontend',
     title: 'FRONTEND DEVELOPMENT',
-    badge: 'IMMERSIVE INTERFACES',
-    icon: '◈',
+    badge: 'INTERFACES & APPS',
     stat: 'WEB & MOBILE',
     summary:
-      'Crafting high-performance client architectures, 3D WebGL experiences with Three.js, cross-platform mobile apps with React Native, and pixel-precise responsive design systems.',
+      'Crafting high-performance client architectures, cross-platform mobile apps with React Native, modern UI component systems, and pixel-precise responsive web experiences.',
     colSpan: 'lg:col-span-5',
     items: [
       { name: 'React.js', level: 98, status: 'EXPERT' },
       { name: 'Next.js', level: 95, status: 'EXPERT' },
       { name: 'React Native', level: 90, status: 'ADVANCED' },
       { name: 'TypeScript', level: 94, status: 'EXPERT' },
-      { name: 'JavaScript', level: 96, status: 'EXPERT' },
-      { name: 'Three.js', level: 86, status: 'ADVANCED' },
+      { name: 'JavaScript (ES6+)', level: 96, status: 'EXPERT' },
       { name: 'Tailwind CSS', level: 96, status: 'EXPERT' },
+      { name: 'Three.js / WebGL', level: 86, status: 'ADVANCED' },
     ],
   },
   {
     id: 'backend',
     title: 'BACKEND DEVELOPMENT',
     badge: 'DISTRIBUTED ARCHITECTURE',
-    icon: '⬡',
     stat: 'HIGH CONCURRENCY',
     summary:
       'Building fault-tolerant server systems, high-concurrency microservices, robust RESTful APIs, and hardened authentication frameworks with JWT and OAuth protocols.',
@@ -72,33 +68,31 @@ const skillCategories: SkillCategory[] = [
     items: [
       { name: 'Node.js', level: 95, status: 'EXPERT' },
       { name: 'Express.js', level: 94, status: 'EXPERT' },
-      { name: 'Python', level: 92, status: 'EXPERT' },
-      { name: 'PHP', level: 85, status: 'ADVANCED' },
-      { name: 'REST APIs', level: 97, status: 'EXPERT' },
-      { name: 'JWT', level: 94, status: 'PRODUCTION' },
-      { name: 'OAuth', level: 92, status: 'PRODUCTION' },
+      { name: 'Python (FastAPI / Flask)', level: 92, status: 'EXPERT' },
+      { name: 'C# / ASP.NET Core', level: 88, status: 'ADVANCED' },
+      { name: 'RESTful APIs', level: 97, status: 'EXPERT' },
+      { name: 'JWT & OAuth', level: 94, status: 'PRODUCTION' },
+      { name: 'Docker Containers', level: 90, status: 'PRODUCTION' },
     ],
   },
   {
     id: 'database',
-    title: 'DATABASES & TOOLS',
+    title: 'DATABASES & CLOUD',
     badge: 'PERSISTENCE & DEVOPS',
-    icon: '✦',
     stat: 'CLOUD & DEPLOYMENT',
     summary:
-      'Engineering relational and document data layers with optimized query performance alongside modern CI/CD tooling, cloud deployments, and developer environments.',
+      'Engineering relational, document, and vector data layers with optimized query performance alongside modern CI/CD tooling, cloud deployments, and developer environments.',
     colSpan: 'lg:col-span-7',
     items: [
+      { name: 'PostgreSQL', level: 94, status: 'EXPERT' },
       { name: 'MongoDB', level: 94, status: 'EXPERT' },
-      { name: 'PostgreSQL', level: 92, status: 'EXPERT' },
-      { name: 'MySQL', level: 90, status: 'ADVANCED' },
+      { name: 'Redis', level: 90, status: 'ADVANCED' },
       { name: 'Supabase', level: 92, status: 'ADVANCED' },
-      { name: 'Firebase', level: 88, status: 'ADVANCED' },
-      { name: 'Git', level: 96, status: 'EXPERT' },
-      { name: 'GitHub', level: 96, status: 'EXPERT' },
+      { name: 'MySQL', level: 90, status: 'ADVANCED' },
+      { name: 'Git & GitHub', level: 96, status: 'EXPERT' },
       { name: 'Postman', level: 94, status: 'PRODUCTION' },
-      { name: 'Vercel', level: 95, status: 'PRODUCTION' },
-      { name: 'Render', level: 90, status: 'PRODUCTION' },
+      { name: 'Docker & CI/CD', level: 92, status: 'PRODUCTION' },
+      { name: 'Vercel & Render', level: 92, status: 'PRODUCTION' },
     ],
   },
 ];
@@ -139,7 +133,7 @@ export const SkillsSection: React.FC = () => {
   return (
     <section
       id="skills"
-      className="relative w-screen font-sans pt-16 pb-28 px-6 sm:px-12 lg:px-20 overflow-hidden flex flex-col justify-center"
+      className="relative w-full font-sans pt-16 pb-28 px-6 sm:px-12 lg:px-20 overflow-hidden flex flex-col justify-center"
       style={{
         backgroundColor: 'var(--secondary-background)',
         color: 'var(--primary-text)',
@@ -218,7 +212,7 @@ export const SkillsSection: React.FC = () => {
           {/* Quick Metrics Bar with Subtle Hover Lift */}
           <div className="flex items-center gap-4 sm:gap-6 pt-2">
             {[
-              { val: '31', label: 'TECHNOLOGIES' },
+              { val: '30', label: 'TECHNOLOGIES' },
               { val: '4', label: 'CORE DOMAINS', accent: true },
               { val: '100%', label: 'PRODUCTION READY' },
             ].map((m, idx) => (
@@ -262,11 +256,11 @@ export const SkillsSection: React.FC = () => {
           style={{ borderBottom: '1px solid var(--border-subtle)' }}
         >
           {[
-            { id: 'all', label: 'ALL CAPABILITIES (31)' },
+            { id: 'all', label: 'ALL CAPABILITIES (30)' },
             { id: 'ai', label: 'AI & AUTOMATION (7)' },
-            { id: 'frontend', label: 'FRONTEND DEVELOPMENT (7)' },
-            { id: 'backend', label: 'BACKEND DEVELOPMENT (7)' },
-            { id: 'database', label: 'DATABASES & TOOLS (10)' },
+            { id: 'frontend', label: 'FRONTEND (7)' },
+            { id: 'backend', label: 'BACKEND (7)' },
+            { id: 'database', label: 'DATABASES & CLOUD (9)' },
           ].map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -321,20 +315,9 @@ export const SkillsSection: React.FC = () => {
                   }}
                 />
 
-                {/* Corner Minimal Pins */}
-                <div 
-                  className="absolute top-0 left-0 w-3 h-3 border-t border-l transition-colors duration-300"
-                  style={{ borderColor: 'var(--accent-color)' }}
-                />
-                <div 
-                  className="absolute bottom-0 right-0 w-3 h-3 border-b border-r transition-colors duration-300"
-                  style={{ borderColor: 'var(--accent-color)' }}
-                />
-
                 {/* Card Meta Header */}
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
-                    <span className="text-sm" style={{ color: 'var(--accent-color)' }}>{block.icon}</span>
                     <span 
                       className="text-[10px] font-mono tracking-[0.25em] uppercase font-bold"
                       style={{ color: 'var(--accent-text)' }}

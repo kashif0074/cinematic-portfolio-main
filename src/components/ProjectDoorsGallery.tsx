@@ -56,19 +56,19 @@ export const healthcareProjects: HealthcareProjectItem[] = [
   {
     id: 'prime-healthcares',
     name: 'Prime Healthcares',
-    subtitle: 'Healthcare Consultancy & MIPS Billing Solutions',
+    subtitle: 'Healthcare Consultancy & MIPS Compliance Platform',
     url: 'https://primehealthcaresllc.com/',
     description:
-      'Official web platform for PrimeHealthcares LLC, an American healthcare business consultancy providing MIPS clinical registry reporting, revenue cycle management, and ACO quality compliance to medical practices across the United States.',
+      'Web platform for an American healthcare consultancy. Built to help medical practices manage MIPS clinical registry submissions, billing workflows, revenue cycle management, and ACO quality compliance.',
     technologies: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS'],
     preview: {
       domain: 'primehealthcaresllc.com',
       tagline: 'Healthcare Management Consulting',
-      headline: 'Empowering Healthcare Practices with Strategic Solutions',
+      headline: 'Operations & MIPS Compliance for Medical Practices',
       points: [
-        'Qualified MIPS Registry Data Submission',
-        'Medical Billing & Revenue Cycle Management',
-        'Accountable Care Organization (ACO) Reporting',
+        'Qualified MIPS registry data submission',
+        'Medical billing and revenue cycle tracking',
+        'Accountable Care Organization (ACO) reporting',
       ],
     },
   },
@@ -78,16 +78,16 @@ export const healthcareProjects: HealthcareProjectItem[] = [
     subtitle: 'Remote Patient Monitoring & Telehealth Platform',
     url: 'https://www.evitalsrpm.com/',
     description:
-      'Turnkey Remote Patient Monitoring (RPM) and Chronic Care Management platform connecting FDA-cleared cellular diagnostic devices directly to clinician review dashboards with automated Medicare CPT billing compliance.',
+      'Remote Patient Monitoring and Chronic Care Management platform connecting cellular diagnostic devices directly to clinician triage dashboards, with automated Medicare CPT billing tracking.',
     technologies: ['React', 'TypeScript', 'Node.js', 'PostgreSQL'],
     preview: {
       domain: 'evitalsrpm.com',
-      tagline: 'Turnkey Cellular RPM Solution',
-      headline: 'Connected Care Made Simple for Modern Practices',
+      tagline: 'Cellular Remote Patient Monitoring',
+      headline: 'Real-Time Patient Vitals & Clinical Triage',
       points: [
-        'Cellular Medical Devices with Zero Setup',
-        'Prioritized Clinician Triage Dashboard',
-        'Automated Medicare RPM / CCM CPT Tracking',
+        'Pre-configured cellular devices with zero patient setup',
+        'Prioritized clinical triage dashboard',
+        'Automated Medicare RPM and CCM CPT code tracking',
       ],
     },
   },
@@ -114,72 +114,73 @@ export const webAppProjects: WebAppProjectItem[] = [
   {
     id: 'leadlens',
     name: 'LeadLens',
-    subtitle: 'Next.js 16 (React 19) • BullMQ & Redis Worker Architecture',
+    subtitle: 'Cold Email & Lead Generation Platform',
     url: 'https://leadlens-ziff.onrender.com',
     githubUrl: 'https://github.com/kashif0074/Leadlens',
     description:
-      'Full-stack enterprise web application built on Next.js 16 App Router with server-side rendering, secure Next-Auth Google OAuth & JWT sessions, Prisma 5 ORM, and Redis-backed BullMQ background queues for automated email delivery and retry handling.',
+      'Full-stack email outreach and lead tracking platform. Features server-side rendering, secure Google OAuth authentication, and background queue workers that handle automated email delivery and retries reliably.',
     technologies: [
       'Next.js 16',
       'React 19',
-      'TypeScript 5',
-      'Tailwind 4',
+      'TypeScript',
+      'Tailwind CSS',
       'Prisma 5',
       'BullMQ',
       'Redis',
+      'PostgreSQL',
       'Next-Auth',
       'Nodemailer',
     ],
     keyFeatures: [
-      'Server-side rendering (SSR), API routes, and Turbopack build optimization',
-      'BullMQ Redis-backed async job queues with exponential retry processing',
-      'Next-Auth Google OAuth & Gmail API integration via googleapis & Nodemailer',
-      'Prisma 5 ORM with PostgreSQL & MongoDB schema migrations',
+      'Server-side rendering and dynamic API routes with Next.js 16 App Router',
+      'Background job queues powered by BullMQ and Redis with automatic retries',
+      'Google OAuth login and Gmail API delivery through Nodemailer',
+      'Prisma ORM schema migrations for PostgreSQL and MongoDB',
     ],
     preview: {
       domain: 'leadlens-ziff.onrender.com',
-      tagline: 'Next.js 16 & Redis Queue Architecture',
-      headline: 'Intelligent Lead Generation & Email Campaign Engine',
+      tagline: 'Email Campaign & Queue Engine',
+      headline: 'Automated Lead Outreach & Queue Management',
       points: [
-        'Next 16 Server Components & Dynamic API Routes',
-        'BullMQ Email Queues & Worker Retries on Redis',
-        'Google OAuth & Prisma ORM Data Persistence',
+        'Next.js Server Components and API endpoints',
+        'Asynchronous BullMQ worker queues on Redis',
+        'Google OAuth and Prisma database integration',
       ],
     },
   },
   {
     id: 'gym-management',
     name: 'Gym Management System',
-    subtitle: 'ASP.NET Core Web API • C# • React 18 & TypeScript • EF Core',
+    subtitle: 'Facility Operations & Membership Platform',
     url: 'https://github.com/kashif0074/Gymmanagementsystem',
     githubUrl: 'https://github.com/kashif0074/Gymmanagementsystem',
     description:
-      'Full-stack enterprise web application designed to streamline gym operations, member subscriptions, class scheduling, attendance logging, and billing. Built with a decoupled architecture featuring ASP.NET Core Web API on the backend and React with TypeScript on the frontend, delivering both a public member portal and a role-based administrative dashboard.',
+      'Full-stack management system built to run day-to-day gym operations. Includes member onboarding, subscription billing, class scheduling, attendance check-ins, and a role-based admin dashboard.',
     technologies: [
       'ASP.NET Core',
       'C#',
       'React 18',
       'TypeScript',
       'Entity Framework Core',
-      'SQLite / SQL',
+      'SQLite',
       'Vite',
       'Tailwind CSS',
       'Docker',
     ],
     keyFeatures: [
-      'Decoupled architecture: ASP.NET Core Web API backend + React 18 TypeScript frontend',
-      'Role-based access: Admin dashboard, self-service Member portal, and Public landing page',
-      'Daily member check-in/out attendance logging and capacity management (/api/attendance)',
-      'Subscription billing, revenue metrics, and Entity Framework Core migrations with seeding',
+      'Decoupled architecture: ASP.NET Core Web API backend with a React TypeScript frontend',
+      'Role-based portals: Public landing page, member self-service, and admin dashboard',
+      'Daily member check-in/out attendance logging and room capacity tracking',
+      'Subscription billing management and database migrations via EF Core',
     ],
     preview: {
       domain: 'gymmanagementsystem.dev',
-      tagline: 'ASP.NET Core & React Decoupled Architecture',
-      headline: 'Full-Stack Facility Operations & Member Lifecycle Platform',
+      tagline: 'ASP.NET Core & React Architecture',
+      headline: 'Gym Operations, Member Lifecycle & Billing',
       points: [
-        'ASP.NET Core Web API with Async EF Core Queries',
-        'Dual Portal: Public Landing & Role-Based Admin UI',
-        'Member Lifecycles, Attendance & Billing Workflows',
+        'ASP.NET Core REST API with async EF Core queries',
+        'Public member portal and administrative dashboard',
+        'Attendance tracking and automated billing flows',
       ],
     },
   },
@@ -206,13 +207,13 @@ export const door4Projects: Door4ProjectItem[] = [
   {
     id: 'avatar-chat',
     name: 'Avatar Chat (Ava Voice Assistant)',
-    subtitle: 'Zero-GPU Talking Avatar • Edge Neural TTS & Groq LLM',
+    subtitle: 'Browser-Based Voice Assistant with Real-Time Lip Sync',
     url: 'https://ava-avatar-chat.onrender.com/',
     githubUrl: 'https://github.com/kashif0074/avatar-chat',
     description:
-      'Lightweight, zero-GPU conversational AI assistant delivering synchronized audio-envelope lip-sync, Microsoft Edge Neural voice synthesis, Groq high-speed LLM inference, and real-time word-by-word subtitles—without requiring costly cloud GPU streaming or heavy 3D rendering engines.',
+      'Conversational AI avatar that runs entirely in the browser without requiring cloud GPUs. Combines Web Audio amplitude analysis for lip-sync, Microsoft Edge Neural voice synthesis, and fast Groq LLM inference for live speech responses with subtitles.',
     technologies: [
-      'Vanilla JavaScript',
+      'JavaScript (ES6+)',
       'HTML5 Canvas',
       'Web Audio API',
       'Web Speech API',
@@ -224,55 +225,54 @@ export const door4Projects: Door4ProjectItem[] = [
       'pgvector',
     ],
     keyFeatures: [
-      'Zero-GPU Client-Side Lip Sync via Web Audio API amplitude envelope detection and HTML5 Canvas blitting',
-      'Dual-tier Neural TTS with Microsoft Edge (en-US-AvaNeural), Groq Orpheus TTS fallback, and local SpeechSynthesis',
-      'Ultra-fast Groq LLM conversational completions with sub-second response times',
-      'RAG context injection pipeline designed for PostgreSQL + pgvector embeddings',
-      'Live synchronized subtitle pill that reveals text dynamically as each word is spoken',
+      'Client-side lip-sync using Web Audio envelope analysis and Canvas rendering',
+      'Natural voice output via Microsoft Edge Neural TTS with browser speech fallback',
+      'Low-latency conversational responses powered by Groq LLM',
+      'Live subtitle stream synchronized word-by-word with audio playback',
+      'Context retrieval pipeline ready for pgvector embeddings',
     ],
     preview: {
       domain: 'ava-avatar-chat.onrender.com',
-      tagline: 'Zero-GPU Real-Time Talking Avatar',
-      headline: 'Conversational Voice Assistant with Native Lip-Sync',
+      tagline: 'Browser-Native Talking Avatar',
+      headline: 'Voice AI Assistant with Synchronized Lip Sync',
       points: [
-        'Client-Side Web Audio Envelope Lip-Sync',
-        'Microsoft Edge Neural Voice Synthesis',
-        'Groq High-Speed LLM Inference Engine',
+        'Zero-GPU audio envelope lip-sync in the browser',
+        'Microsoft Edge Neural voice synthesis',
+        'Sub-second responses via Groq LLM inference',
       ],
     },
   },
   {
     id: 'cms-provider-directory',
     name: 'CMS Medicare Provider Directory',
-    subtitle: 'Python 3.13 • Flask 3.1 & Gunicorn • Contact Intelligence Engine',
+    subtitle: 'Healthcare Provider Directory & Contact Research Engine',
     url: 'https://cms-provider-directory.onrender.com/',
     githubUrl: 'https://github.com/kashif0074/cms-provider-directory',
     description:
-      'Healthcare intelligence platform querying 2M+ live CMS Medicare provider records with in-memory TTL caching and an automated 5-step research pipeline locating official practice websites, hospital affiliations, LinkedIn profiles, and verified public work emails.',
+      'Search platform querying over 2 million live CMS Medicare records. Includes an automated research pipeline that identifies official clinic websites, hospital affiliations, LinkedIn profiles, and verified work emails without pattern guessing.',
     technologies: [
       'Python 3.13',
       'Flask 3.1',
-      'Gunicorn WSGI',
+      'Gunicorn',
       'CMS DataStore API',
       'Tavily Search API',
-      'Google Custom Search',
-      'SSRF Guard',
-      'Vanilla JS (ES6+)',
+      'Google Custom Search API',
+      'Vanilla JavaScript',
     ],
     keyFeatures: [
-      'Parameterized search & virtual pagination across 2M+ live CMS Medicare provider records',
-      'Automated 5-step contact intelligence pipeline locating verified public work emails and practice websites',
-      'Strict anti-guessing policy with multi-directory aggregator exclusion (20+ directories blocked)',
-      'Socket-level SSRF protection, in-memory TTL query caching, and streaming CSV/JSON export',
+      'Live search and pagination across 2M+ official CMS Medicare provider records',
+      'Multi-step contact pipeline finding verified public emails and clinic websites',
+      'Strict verification filters excluding generic aggregator and scraper directories',
+      'In-memory query caching, SSRF network protection, and CSV/JSON data export',
     ],
     preview: {
       domain: 'cms-provider-directory.onrender.com',
-      tagline: 'CMS Medicare Data & Contact Intelligence Engine',
-      headline: '2M+ Healthcare Provider Directory & Verified Contact Search',
+      tagline: 'CMS Medicare Search Engine',
+      headline: 'Provider Lookup & Verified Contact Discovery',
       points: [
-        'Live CMS DataStore API Query Translation',
-        '5-Step Automated Contact Research Workflow',
-        'Strict Anti-Guessing Verified Email Discovery',
+        'Direct integration with CMS DataStore API',
+        'Automated multi-source contact research workflow',
+        'Verified email discovery with aggregator filtering',
       ],
     },
   },
@@ -283,8 +283,8 @@ export const projectsList: ProjectData[] = [
     id: 'rpm-ai',
     number: '01',
     title: 'Healthcare Web Platforms',
-    plaque: 'WEB DEVELOPER',
-    tagline: 'Prime Healthcares & eVitals RPM Live Websites',
+    plaque: 'HEALTHCARE',
+    tagline: 'Prime Healthcares & eVitals RPM Live Platforms',
     category: 'HEALTHCARE WEBSITES',
     badge: 'LIVE WEBSITES',
     client: 'Prime Healthcares LLC & eVitals RPM',
@@ -296,14 +296,14 @@ export const projectsList: ProjectData[] = [
       name: 'Royal Blue',
     },
     summary:
-      'Live healthcare platforms: Prime Healthcares LLC consultancy & eVitals Remote Patient Monitoring platform.',
+      'Production healthcare platforms built for medical business consultancy, MIPS compliance, and remote patient monitoring.',
     description:
-      'Two production healthcare websites: Prime Healthcares LLC and eVitals RPM. Each platform is built for clinical operations, revenue cycle compliance, and real-time patient monitoring.',
+      'Two production healthcare websites: Prime Healthcares LLC, supporting clinical practices with MIPS registry reporting and billing, and eVitals RPM, connecting cellular diagnostic devices directly to clinician review workflows.',
     features: [
-      'Prime Healthcares LLC – Live medical consultancy, MIPS registry & billing portal.',
-      'eVitals RPM – Live cellular Remote Patient Monitoring platform.',
-      'Clean responsive user interfaces with direct live website access.',
-      'Healthcare compliance and clinician workflow integration.',
+      'Prime Healthcares LLC: Medical consultancy, MIPS clinical registry submission, and billing management',
+      'eVitals RPM: Turnkey cellular Remote Patient Monitoring with real-time vitals triage',
+      'Direct integration with Medicare CPT billing codes and clinical practice workflows',
+      'Fully responsive interfaces with live public deployments',
     ],
     techStack: [
       'React',
@@ -315,7 +315,7 @@ export const projectsList: ProjectData[] = [
     ],
     metrics: [
       { label: 'STATUS', value: 'Live' },
-      { label: 'DOMAINS', value: '2 Websites' },
+      { label: 'PROJECTS', value: '2 Platforms' },
       { label: 'SECTOR', value: 'Healthcare' },
     ],
     mockup: {
@@ -323,14 +323,14 @@ export const projectsList: ProjectData[] = [
       appName: 'Healthcare Platforms',
       appCategory: 'HEALTHCARE • LIVE WEBSITES',
       screenTitle: 'Prime Healthcares & eVitals RPM',
-      screenSubtitle: 'Two production healthcare websites',
+      screenSubtitle: 'Clinical consultancy and patient monitoring platforms',
       stats: [
-        { label: 'Project 1', val: 'Prime Healthcares', isGood: true },
-        { label: 'Project 2', val: 'eVitals RPM', isGood: true },
-        { label: 'Status', val: 'Live Online', isGood: true },
+        { label: 'Platform 1', val: 'Prime Healthcares', isGood: true },
+        { label: 'Platform 2', val: 'eVitals RPM', isGood: true },
+        { label: 'Status', val: 'Live in Production', isGood: true },
         { label: 'Access', val: 'Direct Links', isGood: true },
       ],
-      terminalLine: 'Both live platforms operational. Click below to inspect each website.',
+      terminalLine: 'Both healthcare systems active in production.',
     },
     githubUrl: 'https://primehealthcaresllc.com/',
     liveUrl: 'https://primehealthcaresllc.com/',
@@ -340,7 +340,7 @@ export const projectsList: ProjectData[] = [
     number: '02',
     title: 'Full-Stack Web Applications',
     plaque: 'WEB APPS',
-    tagline: 'LeadLens (Next.js 16 & Redis) & Gym Management System (ASP.NET Core & React)',
+    tagline: 'LeadLens (Next.js & Redis) & Gym Management System (ASP.NET Core & React)',
     category: 'FULL-STACK WEB APPS',
     badge: '2 WEB APPS',
     client: 'LeadLens & Gym Management System',
@@ -352,14 +352,14 @@ export const projectsList: ProjectData[] = [
       name: 'Charcoal Slate',
     },
     summary:
-      'Two full-stack web applications: LeadLens (Next.js 16, BullMQ Redis queues, Prisma) and Gym Management System (ASP.NET Core Web API, C#, React).',
+      'Full-stack applications built with Next.js 16, BullMQ background queues, ASP.NET Core Web API, and React.',
     description:
-      'Inside Door 02 are two enterprise full-stack web applications: LeadLens (built with Next.js 16 App Router, BullMQ Redis email workers, and Prisma ORM) and Gym Management System (built with ASP.NET Core Web API, EF Core, and React with TypeScript).',
+      'Two production web systems: LeadLens, a lead generation and automated email campaign engine powered by Redis worker queues, and Gym Management System, a decoupled facility operations platform with membership management and attendance logging.',
     features: [
-      'LeadLens: Next.js 16 (React 19) SSR, BullMQ Redis queues, and Google OAuth.',
-      'Gym Management System: ASP.NET Core Web API, C#, EF Core ORM, and React 18.',
-      'Role-based admin dashboards, attendance tracking, and billing pipelines.',
-      'Complete source code and live deployment access.',
+      'LeadLens: Next.js 16 App Router, BullMQ Redis background worker queues, and Google OAuth',
+      'Gym Management System: ASP.NET Core Web API, C#, Entity Framework Core, and React 18',
+      'Role-based admin portals, member self-service dashboards, and automated billing flows',
+      'Production-ready codebases with public live demos and GitHub repositories',
     ],
     techStack: [
       'Next.js 16',
@@ -368,7 +368,7 @@ export const projectsList: ProjectData[] = [
       'C#',
       'TypeScript',
       'Prisma 5',
-      'EF Core',
+      'Entity Framework Core',
       'BullMQ / Redis',
     ],
     metrics: [
@@ -381,14 +381,14 @@ export const projectsList: ProjectData[] = [
       appName: 'Full-Stack Web Apps',
       appCategory: 'WEB APPS • LEADLENS & GYM SYSTEM',
       screenTitle: 'LeadLens & Gym Management System',
-      screenSubtitle: 'Two production web applications',
+      screenSubtitle: 'Asynchronous queues, REST APIs, and role-based portals',
       stats: [
         { label: 'App 1', val: 'LeadLens SaaS', isGood: true },
         { label: 'App 2', val: 'Gym Management', isGood: true },
         { label: 'Stacks', val: 'Next.js & .NET', isGood: true },
-        { label: 'Source', val: 'GitHub Verified', isGood: true },
+        { label: 'Source', val: 'GitHub Available', isGood: true },
       ],
-      terminalLine: 'Both web application architectures operational.',
+      terminalLine: 'Web applications compiled and operational.',
     },
     githubUrl: 'https://github.com/kashif0074/Leadlens',
     liveUrl: 'https://leadlens-ziff.onrender.com',
@@ -399,7 +399,7 @@ export const projectsList: ProjectData[] = [
     title: 'The AI Engineer Job Tracker',
     plaque: 'AGENTIC AI',
     tagline: 'FastAPI, Next.js 14, LangGraph, AutoGen, pgvector & Neo4j',
-    category: 'AGENTIC AI / MULTI-AGENT PLATFORM',
+    category: 'AGENTIC AI PLATFORM',
     badge: 'AGENTIC AI',
     client: 'The AI Engineer Job Tracker',
     doorColor: {
@@ -410,14 +410,14 @@ export const projectsList: ProjectData[] = [
       name: 'Sage Meadow',
     },
     summary:
-      'Production-grade full-stack Agentic AI platform integrating pgvector semantic match, Neo4j GraphRAG traversal, Playwright LangGraph scraper, and AutoGen multi-agent cover letter generation.',
+      'Multi-tenant Agentic AI platform combining semantic vector search, knowledge graphs, browser automation, and multi-agent workflows.',
     description:
-      'The AI Engineer Job Tracker is a multi-tenant, full-stack application built with FastAPI and Next.js 14. It integrates five distinct AI paradigms: single-agent LangGraph scraping with Playwright, a 3-agent Microsoft AutoGen crew (Researcher, Writer, Critic), pgvector cosine similarity matching, Neo4j GraphRAG skill traversal, and Groq LLM skill extraction.',
+      'Full-stack AI application for tracking job applications and tailoring resumes. It features autonomous web scraping with Playwright, semantic matching via pgvector, graph relationship analysis in Neo4j, and a 3-agent AutoGen team that drafts and refines cover letters.',
     features: [
-      'Multi-Agent Orchestration: Microsoft AutoGen 3-agent crew (Researcher, Writer, Critic) generating tailored cover letters.',
-      'Autonomous Web Scraper: LangGraph state machine driving headless Playwright browser automation.',
-      'Semantic Search & RAG: 384-dimensional vector embeddings with pgvector and local sentence-transformers.',
-      'GraphRAG Knowledge Graph: Neo4j 5 traversal querying (Job)-[:REQUIRES]->(Skill) relationship graphs.',
+      'Multi-Agent Collaboration: 3-agent AutoGen crew (Researcher, Writer, Critic) writing customized cover letters',
+      'Autonomous Browser Scraper: LangGraph state machine with headless Playwright to scrape postings reliably',
+      'Semantic Search & Matching: 384-dimensional vector embeddings with local sentence-transformers and pgvector',
+      'Skill Knowledge Graph: Neo4j 5 graph queries to identify co-occurring technical competencies across job markets',
     ],
     techStack: [
       'Python 3.12',
@@ -433,8 +433,8 @@ export const projectsList: ProjectData[] = [
       'Docker Compose',
     ],
     metrics: [
-      { label: 'AI AGENTS', value: 'AutoGen + LangGraph' },
-      { label: 'VECTOR DB', value: 'pgvector 384-d' },
+      { label: 'AI AGENTS', value: 'AutoGen & LangGraph' },
+      { label: 'VECTOR DB', value: 'pgvector (384-d)' },
       { label: 'GRAPH DB', value: 'Neo4j 5' },
     ],
     mockup: {
@@ -444,12 +444,12 @@ export const projectsList: ProjectData[] = [
       screenTitle: 'AI Engineer Job Tracker',
       screenSubtitle: 'FastAPI • Next.js 14 • LangGraph • AutoGen',
       stats: [
-        { label: 'Agents', val: 'AutoGen Crew', isGood: true },
-        { label: 'Vector RAG', val: 'pgvector', isGood: true },
+        { label: 'Multi-Agent', val: 'AutoGen Crew', isGood: true },
+        { label: 'Vector Search', val: 'pgvector', isGood: true },
         { label: 'Knowledge Graph', val: 'Neo4j 5', isGood: true },
-        { label: 'Scraper', val: 'Playwright', isGood: true },
+        { label: 'Web Scraper', val: 'Playwright', isGood: true },
       ],
-      terminalLine: 'AutoGen 3-agent workflow verified. pgvector Cosine match active.',
+      terminalLine: 'Multi-agent pipeline and vector index active.',
     },
     githubUrl: 'https://github.com/kashif0074/job-tracker-api',
     liveUrl: 'https://github.com/kashif0074/job-tracker-api',
@@ -459,7 +459,7 @@ export const projectsList: ProjectData[] = [
     number: '04',
     title: 'AI Voice & Healthcare Intelligence',
     plaque: 'AI & SYSTEMS',
-    tagline: 'Avatar Chat (Real-Time Voice AI) & CMS Medicare Directory (Python & Flask)',
+    tagline: 'Avatar Chat (Real-Time Voice AI) & CMS Provider Directory (Python & Flask)',
     category: 'AI & HEALTHCARE DATA SYSTEMS',
     badge: '2 LIVE PLATFORMS',
     client: 'Avatar Chat & CMS Provider Directory',
@@ -471,14 +471,14 @@ export const projectsList: ProjectData[] = [
       name: 'Terracotta Orange',
     },
     summary:
-      'Two production platforms: Avatar Chat (Zero-GPU talking avatar AI assistant with Edge Neural TTS) and CMS Provider Directory (Medicare 2M+ record search & 5-step contact intelligence engine).',
+      'Production platforms for browser-native conversational voice AI and automated Medicare provider intelligence.',
     description:
-      'Inside Door 04 are two live production platforms: Avatar Chat (Ava), a lightweight zero-GPU talking avatar with Web Audio API lip-sync and Groq LLM, and CMS Provider Directory, a Python/Flask platform searching 2M+ Medicare records with automated 5-step contact intelligence.',
+      'Two production systems: Avatar Chat, a zero-GPU conversational talking avatar running directly in the browser with neural voice synthesis and Groq LLM, and CMS Provider Directory, a Python platform querying 2M+ Medicare records with automated contact discovery.',
     features: [
-      'Avatar Chat: Zero-GPU client-side lip-sync, Microsoft Edge Neural TTS, and Groq LLM.',
-      'CMS Provider Directory: Live CMS DataStore search over 2M+ records with 5-step email discovery.',
-      'Strict anti-guessing email verification, aggregator filtering, and socket SSRF guard.',
-      'Live deployment access and open-source GitHub repositories for both projects.',
+      'Avatar Chat: Zero-GPU lip-sync using Web Audio envelope analysis, Edge Neural TTS, and low-latency Groq LLM',
+      'CMS Provider Directory: Live search across 2M+ Medicare records with multi-source contact research',
+      'Strict verification filters that exclude generic aggregators and prevent pattern guessing',
+      'Full open-source repositories and live public deployments on Render',
     ],
     techStack: [
       'Python 3.13',
@@ -495,21 +495,21 @@ export const projectsList: ProjectData[] = [
     metrics: [
       { label: 'PLATFORMS', value: '2 Live Projects' },
       { label: 'BACKENDS', value: 'Python & Node.js' },
-      { label: 'DEPLOYMENTS', value: 'Render.com' },
+      { label: 'HOSTING', value: 'Render.com' },
     ],
     mockup: {
       type: 'browser',
       appName: 'AI & Healthcare Systems',
       appCategory: 'AI AVATAR • CMS MEDICARE DIRECTORY',
       screenTitle: 'Avatar Chat & CMS Provider Directory',
-      screenSubtitle: 'Two production platforms live on Render',
+      screenSubtitle: 'Real-time conversational voice and healthcare provider intelligence',
       stats: [
-        { label: 'Project 1', val: 'Avatar Chat (Ava)', isGood: true },
-        { label: 'Project 2', val: 'CMS Directory', isGood: true },
-        { label: 'Stacks', val: 'Python & JS/Node', isGood: true },
-        { label: 'Deployments', val: 'Render.com', isGood: true },
+        { label: 'Voice AI', val: 'Avatar Chat (Ava)', isGood: true },
+        { label: 'Directory', val: 'CMS Directory', isGood: true },
+        { label: 'Backends', val: 'Python & Node.js', isGood: true },
+        { label: 'Hosting', val: 'Render.com', isGood: true },
       ],
-      terminalLine: 'Both platforms operational. Click below to inspect each system.',
+      terminalLine: 'Both systems deployed and operational.',
     },
     githubUrl: 'https://github.com/kashif0074/avatar-chat',
     liveUrl: 'https://ava-avatar-chat.onrender.com/',
@@ -834,8 +834,8 @@ export const ProjectDoorsGallery: React.FC = () => {
                             SYSTEM CAPABILITIES:
                           </span>
                           {project.keyFeatures.map((feat, fIdx) => (
-                            <div key={fIdx} className="flex items-start space-x-2 text-xs text-neutral-200">
-                              <span className="text-emerald-400 font-bold mt-0.5">✔</span>
+                            <div key={fIdx} className="flex items-start space-x-2.5 text-xs text-neutral-200">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 flex-shrink-0" />
                               <span className="leading-snug">{feat}</span>
                             </div>
                           ))}
@@ -1055,9 +1055,9 @@ export const ProjectDoorsGallery: React.FC = () => {
 
                           <div className="pt-2 space-y-1.5 border-t border-white/10">
                             {[
-                              'Autonomous Scraper: LangGraph state machine + Playwright browser automation',
-                              'Multi-Agent Orchestration: Microsoft AutoGen 3-agent crew (Researcher, Writer, Critic)',
-                              'Semantic Vector Search (pgvector 384-d) & GraphRAG (Neo4j 5 Traversal)',
+                              'Autonomous Scraper: LangGraph state machine with Playwright browser automation',
+                              'Multi-Agent Workflows: 3-agent AutoGen team (Researcher, Writer, Critic)',
+                              'Semantic Matching & Knowledge Graph: pgvector search with Neo4j 5 traversal',
                             ].map((pt, idx) => (
                               <div key={idx} className="flex items-center space-x-2 text-[11px] text-neutral-300">
                                 <span className="w-1 h-1 rounded-full bg-emerald-400" />
@@ -1077,7 +1077,7 @@ export const ProjectDoorsGallery: React.FC = () => {
                           FastAPI • Next.js 14 • LangGraph • AutoGen • pgvector & Neo4j
                         </span>
                         <p className="text-xs sm:text-sm text-neutral-300 mt-2.5 leading-relaxed font-sans">
-                          Production-grade full-stack Agentic AI platform for managing job applications. Features pgvector semantic match scoring via local sentence-transformers, Neo4j GraphRAG skill relationships, an autonomous LangGraph scraper with Playwright, and a 3-agent AutoGen crew for personalized cover letters.
+                          Full-stack Agentic AI application for tracking job opportunities and optimizing applications. Features an autonomous browser scraper, semantic resume-to-job matching with pgvector, graph relationship analysis in Neo4j, and a collaborative 3-agent AutoGen crew for tailoring cover letters.
                         </p>
                       </div>
 
@@ -1132,7 +1132,7 @@ export const ProjectDoorsGallery: React.FC = () => {
                   <div className="lg:col-span-6 flex flex-col justify-between rounded-xl border border-white/10 bg-[#141A29] p-6 sm:p-7 shadow-xl">
                     <div className="space-y-4">
                       <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider font-semibold block">
-                        5 CORE AI ARCHITECTURE PARADIGMS:
+                        5 CORE AI SYSTEM CAPABILITIES:
                       </span>
 
                       <div className="space-y-3">
@@ -1141,7 +1141,7 @@ export const ProjectDoorsGallery: React.FC = () => {
                             1. LLM Skill Extraction (Groq)
                           </span>
                           <p className="text-[11px] text-neutral-300 leading-relaxed">
-                            Sends job descriptions to Groq LLM with strict JSON-mode system prompts, extracting structured technical competencies and requirements without hallucination.
+                            Parses job descriptions using Groq LLM with structured JSON output, extracting key technical competencies accurately without hallucination.
                           </p>
                         </div>
 
@@ -1150,7 +1150,7 @@ export const ProjectDoorsGallery: React.FC = () => {
                             2. Semantic Search & RAG (pgvector)
                           </span>
                           <p className="text-[11px] text-neutral-300 leading-relaxed">
-                            Generates 384-dimensional vector embeddings of resumes via local sentence-transformers (zero API cost) and computes Cosine Similarity against job embeddings in pgvector.
+                            Generates 384-dimensional resume embeddings using local sentence-transformers and calculates cosine similarity against job postings in pgvector.
                           </p>
                         </div>
 
@@ -1159,16 +1159,16 @@ export const ProjectDoorsGallery: React.FC = () => {
                             3. GraphRAG Knowledge Graph (Neo4j 5)
                           </span>
                           <p className="text-[11px] text-neutral-300 leading-relaxed">
-                            Traverses <code className="text-emerald-300 text-[10px]">{'(Job)-[:REQUIRES]->(Skill)'}</code> relationships to identify related competencies and adjacent technologies frequently required across postings.
+                            Traverses <code className="text-emerald-300 text-[10px]">{'(Job)-[:REQUIRES]->(Skill)'}</code> relationships in Neo4j to identify adjacent skills frequently required across postings.
                           </p>
                         </div>
 
                         <div className="p-3 rounded-lg bg-[#0E131E] border border-white/5 space-y-1">
                           <span className="text-xs font-bold text-white block">
-                            4. Autonomous Agent (LangGraph + Playwright)
+                            4. Autonomous Browser Scraper (LangGraph + Playwright)
                           </span>
                           <p className="text-[11px] text-neutral-300 leading-relaxed">
-                            A LangGraph state machine where the LLM plans a strategy, runs a headless Playwright browser to scrape job postings (bypassing basic bot blocks), extracts skills, and saves records.
+                            A LangGraph state machine driving headless Playwright to scrape postings, navigate pages, and extract technical requirements.
                           </p>
                         </div>
 
@@ -1177,7 +1177,7 @@ export const ProjectDoorsGallery: React.FC = () => {
                             5. Multi-Agent Orchestration (Microsoft AutoGen)
                           </span>
                           <p className="text-[11px] text-neutral-300 leading-relaxed">
-                            A 3-agent crew (Researcher, Writer, Critic) collaborating iteratively to analyze the job description, draft a targeted cover letter, critique and enforce revisions, and finalize approval.
+                            A 3-agent crew (Researcher, Writer, Critic) collaborating to analyze job postings, draft targeted cover letters, and critique revisions before approval.
                           </p>
                         </div>
                       </div>

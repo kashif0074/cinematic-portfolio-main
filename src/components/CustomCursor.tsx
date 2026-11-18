@@ -1,9 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { animationConfig } from '../config/animationConfig';
+import { useTheme } from '../context/ThemeContext';
 
 type CursorMode = 'default' | 'pointer' | 'magnetic' | 'view' | 'door' | 'text';
 
 export const CustomCursor: React.FC = () => {
+  const { isDark } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const isVisibleRef = useRef(false);
   const [cursorMode, setCursorMode] = useState<CursorMode>('default');
@@ -125,35 +127,38 @@ export const CustomCursor: React.FC = () => {
   // Don't render on mobile/tablet touch devices or if user prefers reduced motion
   if (isTouch || reducedMotion) return null;
 
-  // Determine ring styling based on mode
+  // Determine ring styling based on mode and active theme
   let ringSize = animationConfig.cursor.ringSize;
   let ringBg = 'transparent';
-  let ringBorder = 'rgba(20, 33, 61, 0.45)';
+  let ringBorder = isDark ? 'rgba(102, 140, 255, 0.45)' : 'rgba(20, 33, 61, 0.45)';
   let dotScale = 1;
   let dotOpacity = 1;
   let labelText = '';
 
   if (cursorMode === 'pointer') {
     ringSize = 52;
-    ringBg = 'rgba(20, 33, 61, 0.08)';
-    ringBorder = 'rgba(20, 33, 61, 0.65)';
+    ringBg = isDark ? 'rgba(102, 140, 255, 0.12)' : 'rgba(20, 33, 61, 0.08)';
+    ringBorder = isDark ? 'rgba(102, 140, 255, 0.8)' : 'rgba(20, 33, 61, 0.65)';
     dotScale = 0.5;
   } else if (cursorMode === 'magnetic') {
     ringSize = 62;
-    ringBg = 'rgba(20, 33, 61, 0.12)';
-    ringBorder = 'rgba(20, 33, 61, 0.8)';
+    ringBg = isDark ? 'rgba(102, 140, 255, 0.18)' : 'rgba(20, 33, 61, 0.12)';
+    ringBorder = isDark ? 'rgba(102, 140, 255, 0.95)' : 'rgba(20, 33, 61, 0.8)';
     dotScale = 0.4;
   } else if (cursorMode === 'door' || cursorMode === 'view') {
     ringSize = 74;
-    ringBg = 'rgba(244, 237, 224, 0.95)';
-    ringBorder = 'rgba(244, 237, 224, 1)';
+    ringBg = isDark ? 'rgba(18, 29, 43, 0.95)' : 'rgba(244, 237, 224, 0.95)';
+    ringBorder = isDark ? 'rgba(102, 140, 255, 0.95)' : 'rgba(244, 237, 224, 1)';
     dotOpacity = 0;
     labelText = cursorMode === 'door' ? 'OPEN' : 'VIEW';
   } else if (cursorMode === 'text') {
     ringSize = 24;
-    ringBorder = 'rgba(20, 33, 61, 0.25)';
+    ringBorder = isDark ? 'rgba(102, 140, 255, 0.35)' : 'rgba(20, 33, 61, 0.25)';
     dotScale = 0.6;
   }
+
+  const dotColor = isDark ? '#668CFF' : '#14213D';
+  const dotShadow = isDark ? '0 0 8px rgba(102, 140, 255, 0.7)' : '0 0 6px rgba(20, 33, 61, 0.4)';
 
   return (
     <>
@@ -167,11 +172,12 @@ export const CustomCursor: React.FC = () => {
           height: '450px',
           marginLeft: '-225px',
           marginTop: '-225px',
-          opacity: isVisible ? 0.08 : 0,
-          background:
-            'radial-gradient(circle, rgba(20, 33, 61, 0.85) 0%, rgba(20, 33, 61, 0.15) 45%, transparent 70%)',
+          opacity: isVisible ? (isDark ? 0.05 : 0.08) : 0,
+          background: isDark
+            ? 'radial-gradient(circle, rgba(102, 140, 255, 0.75) 0%, rgba(102, 140, 255, 0.12) 45%, transparent 70%)'
+            : 'radial-gradient(circle, rgba(20, 33, 61, 0.85) 0%, rgba(20, 33, 61, 0.15) 45%, transparent 70%)',
           borderRadius: '50%',
-          mixBlendMode: 'multiply',
+          mixBlendMode: isDark ? 'screen' : 'multiply',
         }}
       />
 
@@ -194,8 +200,11 @@ export const CustomCursor: React.FC = () => {
         {labelText && (
           <span
             ref={labelRef}
-            className="text-[9px] font-bold tracking-[0.2em] uppercase select-none text-[#14213D] animate-fade-in"
-            style={{ fontFamily: "'Montserrat', sans-serif" }}
+            className="text-[9px] font-bold tracking-[0.2em] uppercase select-none animate-fade-in"
+            style={{ 
+              fontFamily: "'Montserrat', sans-serif",
+              color: isDark ? '#F4F7FB' : '#14213D',
+            }}
           >
             {labelText}
           </span>
@@ -214,8 +223,8 @@ export const CustomCursor: React.FC = () => {
           marginTop: `-${animationConfig.cursor.dotSize / 2}px`,
           opacity: isVisible ? dotOpacity : 0,
           transform: `scale(${dotScale})`,
-          backgroundColor: '#14213D',
-          boxShadow: '0 0 6px rgba(20, 33, 61, 0.4)',
+          backgroundColor: dotColor,
+          boxShadow: dotShadow,
         }}
       />
     </>

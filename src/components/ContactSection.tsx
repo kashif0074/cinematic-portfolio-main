@@ -15,7 +15,7 @@ interface ContactItem {
 
 const contactChannels: ContactItem[] = [
   {
-    tag: '// 01: DIRECT EMAIL',
+    tag: '01: EMAIL',
     label: 'Primary Communication Channel',
     value: 'malik.kaxif7@gmail.com',
     href: 'mailto:malik.kaxif7@gmail.com',
@@ -27,8 +27,8 @@ const contactChannels: ContactItem[] = [
     ),
   },
   {
-    tag: '// 02: PHONE & WHATSAPP',
-    label: 'Direct Telephony & Instant Messaging',
+    tag: '02: PHONE & WHATSAPP',
+    label: 'Direct Phone & Instant Messaging',
     value: '+92 344 5089014',
     href: 'https://wa.me/923445089014',
     target: '_blank',
@@ -40,8 +40,8 @@ const contactChannels: ContactItem[] = [
     ),
   },
   {
-    tag: '// 03: PROFESSIONAL NETWORK',
-    label: 'LinkedIn Verified Profile',
+    tag: '03: LINKEDIN',
+    label: 'LinkedIn Professional Profile',
     value: 'linkedin.com/in/kashif-shahzad-581297369',
     href: 'https://www.linkedin.com/in/kashif-shahzad-581297369',
     target: '_blank',
@@ -52,8 +52,8 @@ const contactChannels: ContactItem[] = [
     ),
   },
   {
-    tag: '// 04: OPEN SOURCE & REPOSITORIES',
-    label: 'GitHub Code Repositories & Architectures',
+    tag: '04: GITHUB',
+    label: 'GitHub Code Repositories',
     value: 'github.com/kashif0074',
     href: 'https://github.com/kashif0074',
     target: '_blank',
@@ -137,7 +137,7 @@ export const ContactSection: React.FC = () => {
                       backgroundImage: 'linear-gradient(to bottom, var(--primary-text), var(--secondary-text))',
                     }}
                   >
-                    INITIALIZE
+                    LET'S WORK
                   </span>
                   <span 
                     className="block text-transparent bg-clip-text"
@@ -145,7 +145,7 @@ export const ContactSection: React.FC = () => {
                       backgroundImage: 'linear-gradient(to bottom, var(--accent-secondary), var(--primary-text))',
                     }}
                   >
-                    TRANSMISSION.
+                    TOGETHER.
                   </span>
                 </h2>
               </motion.div>
@@ -155,65 +155,14 @@ export const ContactSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.7, delay: 0.1 }}
-                className="text-xs sm:text-[14px] font-normal leading-relaxed max-w-md mb-8"
+                className="text-xs sm:text-[14px] font-normal leading-relaxed max-w-md"
                 style={{ 
                   fontFamily: "'Montserrat', sans-serif",
                   color: 'var(--secondary-text)',
                 }}
               >
-                Have an ambitious system to architect, an engineering opportunity, or a collaborative technical inquiry? Reach out directly through any verified channel on the terminal.
+                Have an ambitious system to architect, an engineering opportunity, or a collaborative technical inquiry? Reach out directly through email, WhatsApp, or connect on LinkedIn and GitHub.
               </motion.p>
-
-              {/* Status Meta Cards */}
-              <motion.div
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-40px' }}
-                transition={{ duration: 0.7, delay: 0.15 }}
-                className="space-y-3 max-w-md pt-2"
-              >
-                <div 
-                  className="p-3.5 rounded-sm border flex items-center space-x-3"
-                  style={{
-                    backgroundColor: 'var(--card-background)',
-                    borderColor: 'var(--border-subtle)',
-                  }}
-                >
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-mono tracking-wider uppercase font-semibold text-neutral-400">
-                      CURRENT AVAILABILITY
-                    </span>
-                    <span 
-                      className="text-xs font-semibold"
-                      style={{ color: 'var(--primary-text)' }}
-                    >
-                      Open for Full-Stack, AI &amp; Engineering Roles
-                    </span>
-                  </div>
-                </div>
-
-                <div 
-                  className="p-3.5 rounded-sm border flex items-center space-x-3"
-                  style={{
-                    backgroundColor: 'var(--card-background)',
-                    borderColor: 'var(--border-subtle)',
-                  }}
-                >
-                  <span className="text-sm flex-shrink-0" style={{ color: 'var(--accent-color)' }}>⚡</span>
-                  <div className="flex flex-col">
-                    <span className="text-[10px] font-mono tracking-wider uppercase font-semibold text-neutral-400">
-                      RESPONSE LATENCY
-                    </span>
-                    <span 
-                      className="text-xs font-semibold"
-                      style={{ color: 'var(--primary-text)' }}
-                    >
-                      Replies typically within 24 hours
-                    </span>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </div>
 
@@ -236,34 +185,10 @@ export const ContactSection: React.FC = () => {
                 background: 'linear-gradient(to right, transparent, var(--accent-color), transparent)',
               }}
             />
-            
-            {/* Precision Corner Crosshairs */}
-            <div 
-              className="absolute top-0 left-0 w-3 h-3 border-t border-l"
-              style={{ borderColor: 'var(--accent-color)' }}
-            />
-            <div 
-              className="absolute top-0 right-0 w-3 h-3 border-t border-r"
-              style={{ borderColor: 'var(--accent-color)' }}
-            />
-            <div 
-              className="absolute bottom-0 left-0 w-3 h-3 border-b border-l"
-              style={{ borderColor: 'var(--accent-color)' }}
-            />
-            <div 
-              className="absolute bottom-0 right-0 w-3 h-3 border-b border-r"
-              style={{ borderColor: 'var(--accent-color)' }}
-            />
 
             {/* Card Header */}
             <div className="pb-5 mb-5 border-b flex items-center justify-between" style={{ borderColor: 'var(--border-subtle)' }}>
               <div>
-                <span 
-                  className="text-[10px] font-mono tracking-[0.25em] uppercase font-bold block"
-                  style={{ color: 'var(--accent-text)' }}
-                >
-                  // SECURE CHANNELS
-                </span>
                 <h3 
                   className="text-lg sm:text-xl font-bold tracking-tight mt-0.5"
                   style={{ 
@@ -271,12 +196,9 @@ export const ContactSection: React.FC = () => {
                     color: 'var(--primary-text)',
                   }}
                 >
-                  Direct Communication Terminal
+                  Contact Information
                 </h3>
               </div>
-              <span className="hidden sm:inline-block text-[10px] font-mono px-2 py-1 rounded-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold uppercase">
-                Active &amp; Monitored
-              </span>
             </div>
 
             {/* 4 Contact Channel Blocks */}
@@ -354,15 +276,6 @@ export const ContactSection: React.FC = () => {
                   </div>
                 </a>
               ))}
-            </div>
-
-            {/* Bottom Terminal Footer Note */}
-            <div 
-              className="mt-6 pt-4 border-t flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-neutral-400 gap-2"
-              style={{ borderColor: 'var(--border-subtle)' }}
-            >
-              <span>Location: Islamabad, Pakistan (PKT / UTC+5)</span>
-              <span className="text-emerald-400">● Channels Operational</span>
             </div>
           </motion.div>
 
